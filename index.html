@@ -20,27 +20,27 @@
 <!-- ============================================= -->
 <!-- BOOT / INTRO SEQUENCE                          -->
 <!-- ============================================= -->
-<div class="boot" id="boot" role="dialog" aria-label="Initializing research environment">
+<div class="boot" id="boot" role="dialog" aria-label="Initializing research environment" aria-modal="true">
   <button class="boot__skip" id="skipIntro" type="button">Skip intro</button>
 
   <div class="boot__stage" id="bootStage">
 
     <div class="boot__frame" id="frame-mark" data-frame>
-      <span class="boot__mark">S.R.</span>
+      <span class="boot__mark" aria-hidden="true">S.R.</span>
     </div>
 
     <div class="boot__frame" id="frame-init" data-frame>
       <span class="boot__init">INITIALIZING RESEARCH ENVIRONMENT</span>
-      <span class="boot__cursor-blink">_</span>
+      <span class="boot__cursor-blink" aria-hidden="true">_</span>
     </div>
 
     <div class="boot__frame boot__frame--fragments" id="frame-fragments" data-frame>
-      <span class="boot__fragment" style="--d:0s">Σ aᵢxᵢ</span>
-      <span class="boot__fragment" style="--d:0.28s">P(X | θ)</span>
-      <span class="boot__fragment" style="--d:0.56s">∇L(θ)</span>
-      <span class="boot__fragment" style="--d:0.84s">E[X]</span>
-      <span class="boot__fragment" style="--d:1.12s">AᵀA</span>
-      <span class="boot__fragment" style="--d:1.4s">arg min L(θ)</span>
+      <span class="boot__fragment" style="--d:0s" aria-hidden="true">Σ aᵢxᵢ</span>
+      <span class="boot__fragment" style="--d:0.28s" aria-hidden="true">P(X | θ)</span>
+      <span class="boot__fragment" style="--d:0.56s" aria-hidden="true">∇L(θ)</span>
+      <span class="boot__fragment" style="--d:0.84s" aria-hidden="true">E[X]</span>
+      <span class="boot__fragment" style="--d:1.12s" aria-hidden="true">AᵀA</span>
+      <span class="boot__fragment" style="--d:1.4s" aria-hidden="true">arg min L(θ)</span>
     </div>
 
     <div class="boot__frame boot__frame--words" id="frame-words" data-frame>
@@ -77,7 +77,7 @@
         <a href="#cv">CV</a>
       </nav>
 
-      <button class="nav__toggle" id="navToggle" aria-label="Open menu" aria-expanded="false">
+      <button class="nav__toggle" id="navToggle" aria-label="Open menu" aria-expanded="false" aria-controls="navMobile">
         <span></span><span></span><span></span>
       </button>
     </div>
