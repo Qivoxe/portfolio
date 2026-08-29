@@ -1,272 +1,373 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Shivam Roy — Mathematics × AI Engineering</title>
-<meta name="description" content="Shivam Roy — Mathematics undergraduate at University of Delhi building ML, DL, and quantitative systems from first principles.">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Shivam Roy — Mathematics × AI × Systems</title>
+<meta name="description" content="Shivam Roy — mathematics student building intelligent systems at the intersection of mathematics, machine learning, and software engineering." />
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
-<!-- grain / vignette overlay -->
-<div class="grain"></div>
+<!-- Custom cursor (desktop only, injected/controlled by JS) -->
+<div class="cursor-dot" id="cursorDot" aria-hidden="true"></div>
 
-<!-- ============ NAV ============ -->
-<nav class="nav" id="nav">
-  <a href="#top" class="nav-mark">S.R<span class="nav-mark-dot">.</span></a>
-  <div class="nav-links">
-    <a href="#about"><span class="nav-num">§1</span> Definition</a>
-    <a href="#stack"><span class="nav-num">§2</span> Toolkit</a>
-    <a href="#projects"><span class="nav-num">§3</span> Proofs</a>
-    <a href="#learning"><span class="nav-num">§4</span> Open Problems</a>
-    <a href="#contact"><span class="nav-num">§5</span> Q.E.D.</a>
+<!-- ============================================= -->
+<!-- BOOT / INTRO SEQUENCE                          -->
+<!-- ============================================= -->
+<div class="boot" id="boot" role="dialog" aria-label="Initializing research environment">
+  <button class="boot__skip" id="skipIntro" type="button">Skip intro</button>
+
+  <div class="boot__stage" id="bootStage">
+
+    <div class="boot__frame" id="frame-mark" data-frame>
+      <span class="boot__mark">S.R.</span>
+    </div>
+
+    <div class="boot__frame" id="frame-init" data-frame>
+      <span class="boot__init">INITIALIZING RESEARCH ENVIRONMENT</span>
+      <span class="boot__cursor-blink">_</span>
+    </div>
+
+    <div class="boot__frame boot__frame--fragments" id="frame-fragments" data-frame>
+      <span class="boot__fragment" style="--d:0s">Σ aᵢxᵢ</span>
+      <span class="boot__fragment" style="--d:0.28s">P(X | θ)</span>
+      <span class="boot__fragment" style="--d:0.56s">∇L(θ)</span>
+      <span class="boot__fragment" style="--d:0.84s">E[X]</span>
+      <span class="boot__fragment" style="--d:1.12s">AᵀA</span>
+      <span class="boot__fragment" style="--d:1.4s">arg min L(θ)</span>
+    </div>
+
+    <div class="boot__frame boot__frame--words" id="frame-words" data-frame>
+      <span class="boot__word" style="--d:0s">MATHEMATICS</span>
+      <span class="boot__word" style="--d:0.22s">COMPUTATION</span>
+      <span class="boot__word" style="--d:0.44s">INTELLIGENCE</span>
+    </div>
+
+    <div class="boot__frame boot__frame--final" id="frame-final" data-frame>
+      <h1 class="boot__name">SHIVAM ROY</h1>
+      <p class="boot__subtitle">MATHEMATICS × AI × SYSTEMS</p>
+      <button class="boot__enter" id="enterBtn" type="button">
+        <span>ENTER RESEARCH</span>
+        <span class="boot__enter-arrow" aria-hidden="true">→</span>
+      </button>
+    </div>
+
   </div>
-  <a href="mailto:shivamroy2090@gmail.com" class="nav-cta">Say hello →</a>
-  <button class="nav-toggle" id="navToggle" aria-label="Toggle menu"><span></span></button>
-</nav>
+</div>
 
-<!-- ============ HERO ============ -->
-<header class="hero" id="top">
-  <canvas id="signal" class="hero-canvas" aria-hidden="true"></canvas>
+<!-- ============================================= -->
+<!-- MAIN SITE                                      -->
+<!-- ============================================= -->
+<div id="site" class="site" hidden>
 
-  <div class="hero-inner">
-    <p class="eyebrow reveal">B.Sc. (Hons.) Mathematics · University of Delhi</p>
+  <header class="nav" id="siteNav">
+    <div class="nav__inner">
+      <a href="#top" class="nav__brand">SHIVAM ROY</a>
 
-    <h1 class="hero-title reveal">
-      <span class="scramble" data-text="Shivam Roy">Shivam Roy</span>
-    </h1>
+      <nav class="nav__links" aria-label="Primary">
+        <a href="#research">RESEARCH</a>
+        <a href="#work">WORK</a>
+        <a href="#notes">NOTES</a>
+        <a href="#cv">CV</a>
+      </nav>
 
-    <p class="hero-sub reveal">
-      I turn <em>linear algebra, probability &amp; optimization</em> into systems that learn,
-      predict, and trade — one proof, one pipeline at a time.
-    </p>
-
-    <div class="hero-actions reveal">
-      <a href="#projects" class="btn btn-primary">View the proofs</a>
-      <a href="mailto:shivamroy2090@gmail.com" class="btn btn-ghost">Get in touch</a>
+      <button class="nav__toggle" id="navToggle" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
     </div>
 
-    <div class="hero-links reveal">
-      <a href="https://github.com/Qivoxe" target="_blank" rel="noopener">GitHub</a>
-      <span class="dot">·</span>
-      <a href="https://linkedin.com/in/shivam-9352b1374" target="_blank" rel="noopener">LinkedIn</a>
-      <span class="dot">·</span>
-      <a href="https://royshiv.me" target="_blank" rel="noopener">royshiv.me</a>
-    </div>
-  </div>
+    <nav class="nav__mobile" id="navMobile" aria-label="Mobile">
+      <a href="#research">RESEARCH</a>
+      <a href="#work">WORK</a>
+      <a href="#notes">NOTES</a>
+      <a href="#cv">CV</a>
+    </nav>
+  </header>
 
-  <div class="hero-readout" aria-hidden="true">
-    <span>λ(t) = Σ aₙ sin(nωt + φₙ)</span>
-    <span id="tick">t = 0.000</span>
-  </div>
+  <main id="top">
 
-  <div class="scroll-cue reveal" aria-hidden="true"><span></span> scroll</div>
-</header>
-
-<main>
-
-  <!-- ============ ABOUT ============ -->
-  <section class="section" id="about">
-    <div class="section-head reveal">
-      <span class="section-num">§1</span>
-      <h2>Definition</h2>
-    </div>
-
-    <div class="about-grid">
-      <p class="about-lead reveal">
-        A mathematics undergraduate building a rigorous foundation in
-        <strong>artificial intelligence, machine learning, and deep learning</strong> —
-        through mathematics, code, and systems that ship.
-      </p>
-      <p class="about-body reveal">
-        I love turning abstract math — linear algebra, probability, statistics,
-        optimization, and numerical methods — into intelligent systems that learn,
-        predict, and solve real problems. My focus is simple: build powerful AI
-        systems, understand them deeply, and make them useful.
-      </p>
-    </div>
-
-    <div class="focus-grid">
-      <div class="focus-card reveal">
-        <span class="focus-icon">01</span>
-        <h3>Machine Learning</h3>
-        <p>Supervised &amp; unsupervised learning, feature engineering, model evaluation, statistical learning, end‑to‑end ML systems.</p>
-      </div>
-      <div class="focus-card reveal">
-        <span class="focus-icon">02</span>
-        <h3>Deep Learning</h3>
-        <p>Neural networks, PyTorch, computer vision, representation learning, large language models.</p>
-      </div>
-      <div class="focus-card reveal">
-        <span class="focus-icon">03</span>
-        <h3>Mathematics for AI</h3>
-        <p>Linear algebra, probability &amp; statistics, optimization theory, numerical methods, mathematical modeling.</p>
-      </div>
-      <div class="focus-card reveal">
-        <span class="focus-icon">04</span>
-        <h3>Scientific Computing</h3>
-        <p>Data‑driven scientific analysis, numerical simulation, astronomy &amp; space data, high‑performance computation.</p>
-      </div>
-      <div class="focus-card reveal">
-        <span class="focus-icon">05</span>
-        <h3>Software Engineering</h3>
-        <p>Backend development (FastAPI), system design fundamentals, APIs &amp; automation, scalable applications.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============ STACK ============ -->
-  <section class="section section-dark" id="stack">
-    <div class="section-head reveal">
-      <span class="section-num">§2</span>
-      <h2>Toolkit</h2>
-    </div>
-
-    <div class="stack-grid reveal">
-      <div class="stack-col">
-        <h4>Languages</h4>
-        <ul><li>Python</li><li>C++</li><li>JavaScript</li><li>SQL</li></ul>
-      </div>
-      <div class="stack-col">
-        <h4>Machine Learning</h4>
-        <ul><li>Scikit‑learn</li><li>NumPy</li><li>Pandas</li></ul>
-      </div>
-      <div class="stack-col">
-        <h4>Deep Learning</h4>
-        <ul><li>PyTorch</li><li>OpenCV</li></ul>
-      </div>
-      <div class="stack-col">
-        <h4>Backend &amp; Data</h4>
-        <ul><li>FastAPI</li><li>MySQL</li><li>PostgreSQL</li><li>DuckDB</li></ul>
-      </div>
-      <div class="stack-col">
-        <h4>Visualization</h4>
-        <ul><li>Matplotlib</li><li>Plotly</li></ul>
-      </div>
-      <div class="stack-col">
-        <h4>Tooling</h4>
-        <ul><li>Git</li><li>GitHub</li><li>Docker</li></ul>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============ PROJECTS ============ -->
-  <section class="section" id="projects">
-    <div class="section-head reveal">
-      <span class="section-num">§3</span>
-      <h2>Proofs by Construction</h2>
-      <p class="section-note">Selected projects — each one a claim, demonstrated in code.</p>
-    </div>
-
-    <div class="proof-list">
-
-      <article class="proof reveal">
-        <div class="proof-tag">Theorem 1</div>
-        <div class="proof-body">
-          <h3>PlanetX — Exoplanet Detection</h3>
-          <p>An ML pipeline that detects exoplanets from NASA light‑curve data, applying signal
-            processing and classification models to noisy astronomical time series.</p>
-          <div class="proof-meta">
-            <span>Machine Learning</span><span>Astronomy</span><span>Scientific Computing</span>
+    <!-- HERO -->
+    <section class="hero">
+      <div class="container hero__grid">
+        <div class="hero__text reveal">
+          <p class="eyebrow">MATHEMATICS × AI × SYSTEMS</p>
+          <h1 class="hero__title">SHIVAM ROY</h1>
+          <p class="hero__lede">
+            I build intelligent systems grounded in mathematics,
+            statistics, computation, and experimentation.
+          </p>
+          <p class="hero__meta">Mathematics · Machine Learning · Systems · Quantitative Computing</p>
+          <div class="hero__links">
+            <a href="https://github.com/Qivoxe" target="_blank" rel="noopener">GitHub ↗</a>
+            <a href="https://linkedin.com/in/shivam-9352b1374" target="_blank" rel="noopener">LinkedIn ↗</a>
+            <a href="assets/cv/shivam-roy-cv.pdf" target="_blank" rel="noopener">CV ↗</a>
           </div>
         </div>
-        <a class="proof-link" href="https://github.com/Qivoxe" target="_blank" rel="noopener">View repo →</a>
-      </article>
 
-      <article class="proof reveal">
-        <div class="proof-tag">Theorem 2</div>
-        <div class="proof-body">
-          <h3>Causal Inference Engine</h3>
-          <p>A statistical experimentation system for reliable decision‑making — Delta Method
-            variance correction, sample ratio mismatch detection, and multi‑metric A/B testing
-            on a DuckDB analytics engine.</p>
-          <div class="proof-meta">
-            <span>Statistics</span><span>Causal Inference</span><span>ML Systems</span>
+        <div class="hero__visual reveal" aria-hidden="true">
+          <canvas id="heroCanvas"></canvas>
+        </div>
+      </div>
+    </section>
+
+    <!-- RESEARCH -->
+    <section id="research" class="section">
+      <div class="container">
+        <h2 class="section__heading reveal">RESEARCH</h2>
+
+        <ul class="research-list">
+          <li class="research-row reveal">
+            <span class="research-row__num">01</span>
+            <div class="research-row__body">
+              <h3>MACHINE LEARNING</h3>
+              <p>Statistical learning, representation learning, deep learning and intelligent systems.</p>
+            </div>
+            <span class="research-row__arrow" aria-hidden="true">→</span>
+          </li>
+          <li class="research-row reveal">
+            <span class="research-row__num">02</span>
+            <div class="research-row__body">
+              <h3>MATHEMATICS × AI</h3>
+              <p>Probability, statistics, optimization, linear algebra and numerical methods.</p>
+            </div>
+            <span class="research-row__arrow" aria-hidden="true">→</span>
+          </li>
+          <li class="research-row reveal">
+            <span class="research-row__num">03</span>
+            <div class="research-row__body">
+              <h3>QUANTITATIVE SYSTEMS</h3>
+              <p>Market microstructure, simulation, statistical modelling and algorithmic trading.</p>
+            </div>
+            <span class="research-row__arrow" aria-hidden="true">→</span>
+          </li>
+          <li class="research-row reveal">
+            <span class="research-row__num">04</span>
+            <div class="research-row__body">
+              <h3>SCIENTIFIC COMPUTING</h3>
+              <p>Numerical methods, computational experiments and data-driven scientific analysis.</p>
+            </div>
+            <span class="research-row__arrow" aria-hidden="true">→</span>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- SELECTED WORK -->
+    <section id="work" class="section">
+      <div class="container">
+        <h2 class="section__heading reveal">SELECTED WORK</h2>
+
+        <ul class="project-list">
+          <li class="project-row reveal">
+            <a href="#" class="project-row__link" data-project-url>
+              <span class="project-row__num">01</span>
+              <div class="project-row__body">
+                <h3>PLANETX</h3>
+                <p>Exoplanet detection from astronomical light curves.</p>
+                <span class="project-row__stack">Python · PyTorch · Scientific Computing</span>
+              </div>
+              <span class="project-row__cta">VIEW PROJECT <span aria-hidden="true">→</span></span>
+            </a>
+          </li>
+          <li class="project-row reveal">
+            <a href="#" class="project-row__link" data-project-url>
+              <span class="project-row__num">02</span>
+              <div class="project-row__body">
+                <h3>MARKET-MAKING SIMULATOR</h3>
+                <p>Market microstructure and algorithmic market-making simulation.</p>
+                <span class="project-row__stack">Python · C++ · Probability · Quantitative Finance</span>
+              </div>
+              <span class="project-row__cta">VIEW PROJECT <span aria-hidden="true">→</span></span>
+            </a>
+          </li>
+          <li class="project-row reveal">
+            <a href="#" class="project-row__link" data-project-url>
+              <span class="project-row__num">03</span>
+              <div class="project-row__body">
+                <h3>CAUSAL INFERENCE ENGINE</h3>
+                <p>A system for exploring causal relationships through statistical experimentation.</p>
+                <span class="project-row__stack">Python · Statistics · Machine Learning</span>
+              </div>
+              <span class="project-row__cta">VIEW PROJECT <span aria-hidden="true">→</span></span>
+            </a>
+          </li>
+          <li class="project-row reveal">
+            <a href="#" class="project-row__link" data-project-url>
+              <span class="project-row__num">04</span>
+              <div class="project-row__body">
+                <h3>PROOFMESH</h3>
+                <p>Agentic AI / verification-oriented system.</p>
+                <span class="project-row__stack">Python · AI Agents · Graphs · Verification</span>
+              </div>
+              <span class="project-row__cta">VIEW PROJECT <span aria-hidden="true">→</span></span>
+            </a>
+          </li>
+          <li class="project-row reveal">
+            <a href="#" class="project-row__link" data-project-url>
+              <span class="project-row__num">05</span>
+              <div class="project-row__body">
+                <h3>SNIPIFY</h3>
+                <p>Developer-focused productivity tool.</p>
+                <span class="project-row__stack">Python · JavaScript · APIs</span>
+              </div>
+              <span class="project-row__cta">VIEW PROJECT <span aria-hidden="true">→</span></span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- CURRENTLY EXPLORING -->
+    <section class="section section--tight">
+      <div class="container">
+        <h2 class="section__heading reveal">CURRENTLY EXPLORING</h2>
+        <p class="explore__year reveal">2026</p>
+
+        <div class="explore-grid">
+          <div class="explore-item reveal">
+            <span class="explore-item__label">LEARNING</span>
+            <p>C++ / Data Structures / Systems</p>
+          </div>
+          <div class="explore-item reveal">
+            <span class="explore-item__label">BUILDING</span>
+            <p>High-performance quantitative systems</p>
+          </div>
+          <div class="explore-item reveal">
+            <span class="explore-item__label">RESEARCHING</span>
+            <p>Mathematics × Machine Learning</p>
+          </div>
+          <div class="explore-item reveal">
+            <span class="explore-item__label">EXPERIMENTING</span>
+            <p>Agentic AI systems</p>
           </div>
         </div>
-        <a class="proof-link" href="https://github.com/Qivoxe" target="_blank" rel="noopener">View repo →</a>
-      </article>
+      </div>
+    </section>
 
-      <article class="proof reveal">
-        <div class="proof-tag">Theorem 3</div>
-        <div class="proof-body">
-          <h3>Market‑Making Simulator</h3>
-          <p>A simulated market microstructure (Avellaneda–Stoikov &amp; Glosten–Milgrom) built
-            to study pricing, volatility, and trading strategy under uncertainty.</p>
-          <div class="proof-meta">
-            <span>Quant Finance</span><span>Probability</span><span>Simulation</span>
+    <!-- RESEARCH NOTES -->
+    <section id="notes" class="section">
+      <div class="container">
+        <h2 class="section__heading reveal">RESEARCH NOTES</h2>
+
+        <ul class="notes-list">
+          <li class="notes-row reveal">
+            <a href="#" data-note-url>
+              <span class="notes-row__num">01</span>
+              <span class="notes-row__title">Why Market Microstructure Matters</span>
+              <span class="notes-row__tag">Quantitative Systems / Notes</span>
+              <span class="notes-row__arrow" aria-hidden="true">→</span>
+            </a>
+          </li>
+          <li class="notes-row reveal">
+            <a href="#" data-note-url>
+              <span class="notes-row__num">02</span>
+              <span class="notes-row__title">Mathematics Behind Gradient Descent</span>
+              <span class="notes-row__tag">Machine Learning / Notes</span>
+              <span class="notes-row__arrow" aria-hidden="true">→</span>
+            </a>
+          </li>
+          <li class="notes-row reveal">
+            <a href="#" data-note-url>
+              <span class="notes-row__num">03</span>
+              <span class="notes-row__title">Designing Reliable AI Systems</span>
+              <span class="notes-row__tag">AI Systems / Notes</span>
+              <span class="notes-row__arrow" aria-hidden="true">→</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section class="section section--tight">
+      <div class="container about__grid">
+        <div class="reveal">
+          <h2 class="section__heading">ABOUT</h2>
+          <p class="about__text">
+            I am Shivam Roy, a mathematics student interested in
+            building intelligent systems where mathematical reasoning,
+            machine learning and software engineering meet.
+          </p>
+        </div>
+
+        <div class="about__meta reveal">
+          <div class="about__meta-item">
+            <span class="about__meta-label">FOCUS</span>
+            <span>Mathematics · AI · Systems</span>
+          </div>
+          <div class="about__meta-item">
+            <span class="about__meta-label">INTERESTS</span>
+            <span>ML · Quant · Scientific Computing</span>
+          </div>
+          <div class="about__meta-item">
+            <span class="about__meta-label">BUILDING</span>
+            <span>Software · Research · Experiments</span>
           </div>
         </div>
-        <a class="proof-link" href="https://github.com/Qivoxe" target="_blank" rel="noopener">View repo →</a>
-      </article>
+      </div>
+    </section>
 
-      <article class="proof reveal">
-        <div class="proof-tag">Theorem 4</div>
-        <div class="proof-body">
-          <h3>Snipify</h3>
-          <p>A production‑grade URL shortener with real‑time analytics — built on a scalable
-            backend for high‑throughput redirects.</p>
-          <div class="proof-meta">
-            <span>FastAPI</span><span>PostgreSQL</span><span>Redis</span><span>Docker</span>
+    <!-- CV -->
+    <section id="cv" class="section section--tight">
+      <div class="container">
+        <h2 class="section__heading reveal">CURRICULUM VITAE</h2>
+
+        <div class="cv-block reveal">
+          <div class="cv-block__item">
+            <span class="cv-block__label">Education</span>
+            <span>B.Sc. (Hons.) Mathematics</span>
+          </div>
+          <div class="cv-block__item">
+            <span class="cv-block__label">Interests</span>
+            <span>Machine Learning · AI · Quantitative Systems</span>
+          </div>
+
+          <div class="cv-block__actions">
+            <a href="assets/cv/shivam-roy-cv.pdf" target="_blank" rel="noopener">VIEW CV →</a>
+            <a href="assets/cv/shivam-roy-cv.pdf" download>DOWNLOAD CV →</a>
           </div>
         </div>
-        <a class="proof-link" href="https://github.com/Qivoxe" target="_blank" rel="noopener">View repo →</a>
-      </article>
+      </div>
+    </section>
 
+  </main>
+
+  <footer class="footer">
+    <div class="container footer__inner">
+      <div class="footer__brand">
+        <span class="footer__name">SHIVAM ROY</span>
+        <span class="footer__tag">MATHEMATICS × AI × SYSTEMS</span>
+      </div>
+
+      <div class="footer__links">
+        <a href="https://github.com/Qivoxe" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://linkedin.com/in/shivam-9352b1374" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="mailto:hello@royshiv.me">Email</a>
+        <a href="assets/cv/shivam-roy-cv.pdf" target="_blank" rel="noopener">CV</a>
+      </div>
+
+      <div class="footer__bottom">
+        <span>© 2026 Shivam Roy</span>
+        <button id="replayIntro" class="footer__replay" type="button">REPLAY INTRO ↗</button>
+      </div>
     </div>
-  </section>
+  </footer>
 
-  <!-- ============ LEARNING ============ -->
-  <section class="section section-dark" id="learning">
-    <div class="section-head reveal">
-      <span class="section-num">§4</span>
-      <h2>Open Problems</h2>
-      <p class="section-note">Currently under active study.</p>
-    </div>
+</div>
 
-    <div class="chip-row reveal">
-      <span class="chip">Deep Learning (Advanced)</span>
-      <span class="chip">PyTorch, hands‑on</span>
-      <span class="chip">Large Language Models</span>
-      <span class="chip">Computer Vision</span>
-      <span class="chip">Data Structures &amp; Algorithms</span>
-      <span class="chip">Real‑world ML Systems</span>
-    </div>
-  </section>
-
-  <!-- ============ CONTACT ============ -->
-  <section class="section contact" id="contact">
-    <div class="section-head reveal">
-      <span class="section-num">§5</span>
-      <h2>Q.E.D.</h2>
-    </div>
-
-    <p class="contact-lead reveal">
-      Building intelligent, production‑ready systems — powered by strong mathematics.
-      If that's a problem worth solving together, let's talk.
-    </p>
-
-    <div class="contact-actions reveal">
-      <a href="mailto:shivamroy2090@gmail.com" class="btn btn-primary">shivamroy2090@gmail.com</a>
-    </div>
-
-    <div class="contact-links reveal">
-      <a href="https://github.com/Qivoxe" target="_blank" rel="noopener">GitHub ↗</a>
-      <a href="https://linkedin.com/in/shivam-9352b1374" target="_blank" rel="noopener">LinkedIn ↗</a>
-      <a href="https://royshiv.me" target="_blank" rel="noopener">royshiv.me ↗</a>
-    </div>
-  </section>
-
-</main>
-
-<footer class="footer">
-  <p>Designed &amp; built by Shivam Roy · <span id="year"></span></p>
-  <p class="footer-quote">Understand deeply. Build relentlessly. Improve constantly.</p>
-</footer>
+<!-- No-JS fallback: reveal the site immediately if scripts are disabled -->
+<noscript>
+  <style>
+    #boot { display: none !important; }
+    #site { display: block !important; }
+  </style>
+</noscript>
 
 <script src="script.js"></script>
 </body>
