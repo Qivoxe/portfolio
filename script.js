@@ -109,7 +109,8 @@ function enterPortfolio(boot) {
     setTimeout(finish, 900);
   }
 
-  initScrollReveal(); // re-check reveal state now that layout is visible
+  initHeroVisualization();
+  initScrollReveal();
 }
 
 function initReplayIntro() {
@@ -157,9 +158,13 @@ function initNavigation() {
 }
 
 /* -----------------------------------------------------
-   SCROLL REVEAL
-   ----------------------------------------------------- */
+    SCROLL REVEAL
+    ----------------------------------------------------- */
+let scrollRevealInitialized = false;
 function initScrollReveal() {
+  if (scrollRevealInitialized) return;
+  scrollRevealInitialized = true;
+
   const items = document.querySelectorAll(".reveal");
 
   if (prefersReducedMotion || !("IntersectionObserver" in window)) {
@@ -386,14 +391,13 @@ function initProjectInteractions() {
 }
 
 /* -----------------------------------------------------
-   INIT
-   ----------------------------------------------------- */
+    INIT
+    ----------------------------------------------------- */
 document.addEventListener("DOMContentLoaded", () => {
   runBootSequence();
   initReplayIntro();
   initNavigation();
   initScrollReveal();
   initCursor();
-  initHeroVisualization();
   initProjectInteractions();
 });
