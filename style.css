@@ -1206,3 +1206,90 @@ body::before {
 .animate-in {
   animation: fadeInUp 0.7s var(--ease) forwards;
 }
+
+/* =====================================================
+   MANSI — CURSOR CHASING FLAMINGO
+   ===================================================== */
+.mansi {
+  position: fixed;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  z-index: 90;
+  will-change: transform;
+  user-select: none;
+}
+
+.mansi__flipper {
+  width: 32px;
+  height: 32px;
+  transition: transform 0.2s ease-out;
+}
+
+.mansi__bobber {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.mansi__tooltip {
+  position: absolute;
+  bottom: calc(100% + 8px);
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--text-secondary);
+  white-space: nowrap;
+  opacity: 0;
+  animation: mansiTooltip 4s ease-in-out forwards;
+  pointer-events: none;
+  letter-spacing: 0.04em;
+}
+
+@keyframes mansiTooltip {
+  0% { opacity: 0; transform: translateX(-50%) translateY(4px); }
+  15% { opacity: 0.9; transform: translateX(-50%) translateY(0); }
+  70% { opacity: 0.9; }
+  100% { opacity: 0; }
+}
+
+.mansi.is-idle .mansi__bobber {
+  animation: mansiBob 2.5s ease-in-out infinite;
+}
+
+@keyframes mansiBob {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-1.5px); }
+}
+
+.mansi.is-idle .mansi__head {
+  animation: mansiHead 2.5s ease-in-out infinite;
+}
+
+.mansi.is-idle .mansi__leg--left {
+  animation: mansiLegLeft 2.5s ease-in-out infinite;
+}
+
+.mansi.is-idle .mansi__leg--right {
+  animation: mansiLegRight 2.5s ease-in-out infinite 0.4s;
+}
+
+@keyframes mansiHead {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-0.5px); }
+}
+
+@keyframes mansiLegLeft {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(0.5px); }
+}
+
+@keyframes mansiLegRight {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(0.5px); }
+}
+
+@media (hover: none), (pointer: coarse) {
+  .mansi { display: none !important; }
+}

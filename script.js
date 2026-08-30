@@ -247,4 +247,84 @@ document.addEventListener('DOMContentLoaded', () => {
   initGithubActivity();
   initLocalTime();
   initSmoothScroll();
+  initMansi();
 });
+
+/* -----------------------------------------------------
+   MANSI — CURSOR CHASING FLAMINGO
+   ----------------------------------------------------- */
+function initMansi() {
+  if (prefersReducedMotion) return;
+
+  const isTouchDevice = window.matchMedia('(hover: none), (pointer: coarse)').matches;
+  if (isTouchDevice) return;
+
+  const mansi = document.getElementById('mansi');
+  if (!mansi) return;
+
+  const flipper = mansi.querySelector('.mansi__flipper');
+
+  let mouseX = window.innerWidth / 2;
+  let mouseY = window.innerHeight / 2;
+  let mansiX = mouseX - 25;
+  let mansiY = mouseY + 20;
+  let lastMouseMove = 0;
+  let isIdle = false;
+
+  const LERP = 0.08;
+  const OFFSET_X = 25;
+  const OFFSET_Y = 20;
+  const IDLE_DELAY = 300;
+  const SNAP_DISTANCE = 1;
+  const DIRECTION_THRESHOLD = 2;
+
+  mansi.style.transform = `translate(${mansiX}px, ${mansiY}px)`;
+
+  function onMouseMove(e) {
+    mouseX = e.clientX;
+    mouseY = e.clientY;
+    lastMouseMove = performance.now();
+
+    if (isIdle) {
+      isIdle = false;
+      mansi.classList.remove('is-idle');
+    }
+  }
+
+  window.addEventListener('mousemove', onMouseMove, { passive: true });
+
+  window.addEventListener('touchstart', () => {
+    mansi.style.display = 'none';
+  }, { once: true });
+
+  function animate() {
+    const targetX = mouseX - OFFSET_X;
+    const targetY = mouseY + OFFSET_Y;
+
+    mansiX += (targetX - mansiX) * LERP;
+    mansiY += (targetY - mansiY) * LERP;
+
+    const dx = targetX - mansiX;
+    const dy = targetY - mansiY;
+    const distance = Math.sqrt(dx * dx + dy * dy);
+
+    if (distance > DIRECTION_THRESHOLD) {
+      const facingRight = dx > 0;
+      flipper.style.transform = `scaleX(${facingRight ? -1 : 1})`;
+    }
+
+    if (!isIdle && performance.now() - lastMouseMove > IDLE_DELAY) {
+      const remainingX = Math.abs(targetX - mansiX);
+      const remainingY = Math.abs(targetY - mansiY);
+      if (remainingX < SNAP_DISTANCE && remainingY < SNAP_DISTANCE) {
+        isIdle = true;
+        mansi.classList.add('is-idle');
+      }
+    }
+
+    mansi.style.transform = `translate(${mansiX}px, ${mansiY}px)`;
+    requestAnimationFrame(animate);
+  }
+
+  requestAnimationFrame(animate);
+}
