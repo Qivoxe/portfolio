@@ -1208,9 +1208,9 @@ body::before {
 }
 
 /* =====================================================
-   MANSI — CURSOR CHASING FLAMINGO
+   CAT — CURSOR CHASING COMPANION
    ===================================================== */
-.mansi {
+.cat {
   position: fixed;
   top: 0;
   left: 0;
@@ -1220,19 +1220,19 @@ body::before {
   user-select: none;
 }
 
-.mansi__flipper {
-  width: 32px;
-  height: 32px;
+.cat__flipper {
+  width: 36px;
+  height: 36px;
   transition: transform 0.2s ease-out;
 }
 
-.mansi__bobber {
+.cat__bobber {
   position: relative;
   width: 100%;
   height: 100%;
 }
 
-.mansi__tooltip {
+.cat__tooltip {
   position: absolute;
   bottom: calc(100% + 8px);
   left: 50%;
@@ -1242,54 +1242,54 @@ body::before {
   color: var(--text-secondary);
   white-space: nowrap;
   opacity: 0;
-  animation: mansiTooltip 4s ease-in-out forwards;
+  animation: catTooltip 4s ease-in-out forwards;
   pointer-events: none;
   letter-spacing: 0.04em;
 }
 
-@keyframes mansiTooltip {
+@keyframes catTooltip {
   0% { opacity: 0; transform: translateX(-50%) translateY(4px); }
   15% { opacity: 0.9; transform: translateX(-50%) translateY(0); }
   70% { opacity: 0.9; }
   100% { opacity: 0; }
 }
 
-.mansi.is-idle .mansi__bobber {
-  animation: mansiBob 2.5s ease-in-out infinite;
+.cat.is-idle .cat__bobber {
+  animation: catBob 2.5s ease-in-out infinite;
 }
 
-@keyframes mansiBob {
+@keyframes catBob {
   0%, 100% { transform: translateY(0); }
   50% { transform: translateY(-1.5px); }
 }
 
-.mansi.is-idle .mansi__head {
-  animation: mansiHead 2.5s ease-in-out infinite;
+.cat.is-idle .cat__ear--left {
+  animation: catEarLeft 2.5s ease-in-out infinite;
 }
 
-.mansi.is-idle .mansi__leg--left {
-  animation: mansiLegLeft 2.5s ease-in-out infinite;
+.cat.is-idle .cat__ear--right {
+  animation: catEarRight 2.5s ease-in-out infinite 0.3s;
 }
 
-.mansi.is-idle .mansi__leg--right {
-  animation: mansiLegRight 2.5s ease-in-out infinite 0.4s;
+.cat.is-idle .cat__tail {
+  animation: catTail 2.5s ease-in-out infinite;
 }
 
-@keyframes mansiHead {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-0.5px); }
+@keyframes catEarLeft {
+  0%, 100% { transform: rotate(0deg); }
+  50% { transform: rotate(-3deg); }
 }
 
-@keyframes mansiLegLeft {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(0.5px); }
+@keyframes catEarRight {
+  0%, 100% { transform: rotate(0deg); }
+  50% { transform: rotate(3deg); }
 }
 
-@keyframes mansiLegRight {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(0.5px); }
+@keyframes catTail {
+  0%, 100% { transform: rotate(0deg); }
+  50% { transform: rotate(5deg); }
 }
 
 @media (hover: none), (pointer: coarse) {
-  .mansi { display: none !important; }
+  .cat { display: none !important; }
 }
