@@ -1,336 +1,482 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Shivam Roy — Mathematics × AI × Systems</title>
-<meta name="description" content="Shivam Roy — mathematics student building intelligent systems at the intersection of mathematics, machine learning, and software engineering." />
-
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@300;400;500&display=swap" rel="stylesheet">
-
-<link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Shivam Kumar — AI / Agentic AI Engineer & Software Developer</title>
+  <meta name="description" content="Shivam Kumar — AI / Agentic AI Engineer & Software Developer. Building intelligent systems, backend infrastructure, and products that solve real problems." />
+  <meta property="og:title" content="Shivam Kumar — AI / Agentic AI Engineer & Software Developer" />
+  <meta property="og:description" content="Building intelligent systems and high-performance software." />
+  <meta property="og:type" content="website" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
-<!-- Custom cursor (desktop only, injected/controlled by JS) -->
-<div class="cursor-dot" id="cursorDot" aria-hidden="true"></div>
-
-<!-- ============================================= -->
-<!-- BOOT / INTRO SEQUENCE                          -->
-<!-- ============================================= -->
-<div class="boot" id="boot" role="dialog" aria-label="Initializing research environment" aria-modal="true">
-  <button class="boot__skip" id="skipIntro" type="button">Skip intro</button>
-
-  <div class="boot__stage" id="bootStage">
-
-    <div class="boot__frame" id="frame-mark" data-frame>
-      <span class="boot__mark" aria-hidden="true">S.R.</span>
-    </div>
-
-    <div class="boot__frame" id="frame-init" data-frame>
-      <span class="boot__init">INITIALIZING RESEARCH ENVIRONMENT</span>
-      <span class="boot__cursor-blink" aria-hidden="true">_</span>
-    </div>
-
-    <div class="boot__frame boot__frame--fragments" id="frame-fragments" data-frame>
-      <span class="boot__fragment" style="--d:0s" aria-hidden="true">Σ aᵢxᵢ</span>
-      <span class="boot__fragment" style="--d:0.28s" aria-hidden="true">P(X | θ)</span>
-      <span class="boot__fragment" style="--d:0.56s" aria-hidden="true">∇L(θ)</span>
-      <span class="boot__fragment" style="--d:0.84s" aria-hidden="true">E[X]</span>
-      <span class="boot__fragment" style="--d:1.12s" aria-hidden="true">AᵀA</span>
-      <span class="boot__fragment" style="--d:1.4s" aria-hidden="true">arg min L(θ)</span>
-    </div>
-
-    <div class="boot__frame boot__frame--words" id="frame-words" data-frame>
-      <span class="boot__word" style="--d:0s">MATHEMATICS</span>
-      <span class="boot__word" style="--d:0.22s">COMPUTATION</span>
-      <span class="boot__word" style="--d:0.44s">INTELLIGENCE</span>
-    </div>
-
-    <div class="boot__frame boot__frame--final" id="frame-final" data-frame>
-      <h1 class="boot__name">SHIVAM ROY</h1>
-      <p class="boot__subtitle">MATHEMATICS × AI × SYSTEMS</p>
-      <button class="boot__enter" id="enterBtn" type="button">
-        <span>ENTER RESEARCH</span>
-        <span class="boot__enter-arrow" aria-hidden="true">→</span>
-      </button>
-    </div>
-
-  </div>
-</div>
-
-<!-- ============================================= -->
-<!-- MAIN SITE                                      -->
-<!-- ============================================= -->
-<div id="site" class="site" hidden>
-
+  <!-- ============================================= -->
+  <!-- NAVIGATION                                     -->
+  <!-- ============================================= -->
   <header class="nav" id="siteNav">
     <div class="nav__inner">
-      <a href="#top" class="nav__brand">SHIVAM ROY</a>
+      <a href="#top" class="nav__brand" aria-label="Shivam Kumar home">
+        <img src="assets/images/profile.jpg" alt="" class="nav__avatar" loading="eager" />
+        Shivam Kumar
+      </a>
 
       <nav class="nav__links" aria-label="Primary">
-        <a href="#research">RESEARCH</a>
-        <a href="#work">WORK</a>
-        <a href="#notes">NOTES</a>
-        <a href="#cv">CV</a>
+        <a href="#about">About</a>
+        <a href="#work">Work</a>
+        <a href="#projects">Projects</a>
+        <a href="#skills">Skills</a>
+        <a href="#github">GitHub</a>
+        <a href="#contact">Contact</a>
       </nav>
 
       <button class="nav__toggle" id="navToggle" aria-label="Open menu" aria-expanded="false" aria-controls="navMobile">
-        <span></span><span></span><span></span>
+        <span></span>
+        <span></span>
+        <span></span>
       </button>
     </div>
-
-    <nav class="nav__mobile" id="navMobile" aria-label="Mobile">
-      <a href="#research">RESEARCH</a>
-      <a href="#work">WORK</a>
-      <a href="#notes">NOTES</a>
-      <a href="#cv">CV</a>
-    </nav>
   </header>
+
+  <!-- Mobile nav overlay -->
+  <nav class="nav__mobile" id="navMobile" aria-label="Mobile">
+    <a href="#about">About</a>
+    <a href="#work">Work</a>
+    <a href="#projects">Projects</a>
+    <a href="#skills">Skills</a>
+    <a href="#github">GitHub</a>
+    <a href="#contact">Contact</a>
+  </nav>
 
   <main id="top">
 
-    <!-- HERO -->
+    <!-- ============================================= -->
+    <!-- HERO                                          -->
+    <!-- ============================================= -->
     <section class="hero">
-      <div class="container hero__grid">
-        <div class="hero__text reveal">
-          <p class="eyebrow">MATHEMATICS × AI × SYSTEMS</p>
-          <h1 class="hero__title">SHIVAM ROY</h1>
-          <p class="hero__lede">
-            I build intelligent systems grounded in mathematics,
-            statistics, computation, and experimentation.
-          </p>
-          <p class="hero__meta">Mathematics · Machine Learning · Systems · Quantitative Computing</p>
-          <div class="hero__links">
-            <a href="https://github.com/Qivoxe" target="_blank" rel="noopener">GitHub ↗</a>
-            <a href="https://linkedin.com/in/shivam-9352b1374" target="_blank" rel="noopener">LinkedIn ↗</a>
-            <a href="assets/cv/shivam-roy-cv.pdf" target="_blank" rel="noopener">CV ↗</a>
+      <div class="container">
+        <div class="hero__grid">
+          <div class="hero__text reveal">
+            <p class="hero__eyebrow">Learning relentlessly.</p>
+            <h1 class="hero__title">Shivam.</h1>
+            <p class="hero__lede">AI / Agentic AI Engineer &amp; Software Developer.</p>
+            <p class="hero__subtitle">Building intelligent systems, backend infrastructure, and products that solve real problems. Currently exploring Agentic AI, distributed systems, C++, and high-performance engineering.</p>
+            <div class="hero__actions">
+              <a href="#projects" class="btn btn--primary">
+                See my work
+                <span class="btn__arrow" aria-hidden="true">→</span>
+              </a>
+              <a href="https://github.com/Qivoxe" target="_blank" rel="noopener" class="btn btn--outline">GitHub</a>
+              <a href="https://x.com" target="_blank" rel="noopener" class="btn btn--outline">X</a>
+              <a href="https://linkedin.com/in/shivam-9352b1374" target="_blank" rel="noopener" class="btn btn--outline">LinkedIn</a>
+              <a href="mailto:hello@royshiv.me" class="btn btn--outline">Email</a>
+            </div>
+
+            <div class="hero__cards">
+              <div class="hero-card">
+                <div class="hero-card__label">Open to</div>
+                <div class="hero-card__text">Internships, freelance &amp; collaborations</div>
+              </div>
+              <div class="hero-card">
+                <div class="hero-card__label">Building</div>
+                <div class="hero-card__text">AI agents, backend systems &amp; developer tools</div>
+              </div>
+              <div class="hero-card">
+                <div class="hero-card__label">Learning</div>
+                <div class="hero-card__text">Agentic AI · C++ · Distributed Systems · HFT</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="hero__visual reveal" aria-hidden="true">
+            <div class="hero__image-glow" aria-hidden="true"></div>
+            <div class="hero__image-wrap">
+              <img src="assets/images/profile.jpg" alt="Shivam Kumar" loading="eager" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <hr class="section__divider" />
+
+    <!-- ============================================= -->
+    <!-- ABOUT                                         -->
+    <!-- ============================================= -->
+    <section id="about" class="section">
+      <div class="container">
+        <div class="section__header reveal">
+          <span class="section__number">01</span>
+          <span class="section__title">about</span>
+          <span class="section__line" aria-hidden="true"></span>
+        </div>
+
+        <div class="about__grid">
+          <div class="reveal">
+            <p class="about__text">Hey, I'm Shivam. I enjoy building software, exploring emerging technologies, and turning ideas into working products.</p>
+            <p class="about__text">Most of my work revolves around AI systems, backend engineering, full-stack development, and developer-focused tools. I like understanding how systems work underneath the abstraction rather than only using frameworks at the surface.</p>
+            <p class="about__text">Lately, I've been focusing heavily on Agentic AI, LangGraph, LLM systems, C++, distributed systems, backend architecture, and high-performance software.</p>
+            <p class="about__text">For me, programming is about continuous learning. Every project should make me a better engineer.</p>
+          </div>
+
+          <div class="about__meta reveal">
+            <div class="about__meta-item">
+              <span class="about__meta-label">Focus</span>
+              <span class="about__meta-text">Agentic AI · Backend · Full-Stack · Systems</span>
+            </div>
+            <div class="about__meta-item">
+              <span class="about__meta-label">Currently</span>
+              <span class="about__meta-text">Exploring C++, distributed systems, and HFT</span>
+            </div>
+            <div class="about__meta-item">
+              <span class="about__meta-label">Based in</span>
+              <span class="about__meta-text">India</span>
+            </div>
           </div>
         </div>
 
-        <div class="hero__visual reveal" aria-hidden="true">
-          <canvas id="heroCanvas"></canvas>
+        <div class="snapshot reveal">
+          <div class="snapshot__title">Developer Snapshot</div>
+          <div class="snapshot__list">
+            <div class="snapshot__item">
+              <span class="snapshot__bullet" aria-hidden="true"></span>
+              Building real products instead of tutorial projects.
+            </div>
+            <div class="snapshot__item">
+              <span class="snapshot__bullet" aria-hidden="true"></span>
+              Exploring Agentic AI and intelligent systems.
+            </div>
+            <div class="snapshot__item">
+              <span class="snapshot__bullet" aria-hidden="true"></span>
+              Improving C++ and systems programming.
+            </div>
+            <div class="snapshot__item">
+              <span class="snapshot__bullet" aria-hidden="true"></span>
+              Learning distributed systems and backend architecture.
+            </div>
+            <div class="snapshot__item">
+              <span class="snapshot__bullet" aria-hidden="true"></span>
+              Growing through projects, experimentation, and open source.
+            </div>
+            <div class="snapshot__item">
+              <span class="snapshot__bullet" aria-hidden="true"></span>
+              Interested in internships and collaborations.
+            </div>
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- RESEARCH -->
-    <section id="research" class="section">
-      <div class="container">
-        <h2 class="section__heading reveal">RESEARCH</h2>
+    <hr class="section__divider" />
 
-        <ul class="research-list">
-          <li class="research-row reveal">
-            <span class="research-row__num">01</span>
-            <div class="research-row__body">
-              <h3>MACHINE LEARNING</h3>
-              <p>Statistical learning, representation learning, deep learning and intelligent systems.</p>
-            </div>
-            <span class="research-row__arrow" aria-hidden="true">→</span>
-          </li>
-          <li class="research-row reveal">
-            <span class="research-row__num">02</span>
-            <div class="research-row__body">
-              <h3>MATHEMATICS × AI</h3>
-              <p>Probability, statistics, optimization, linear algebra and numerical methods.</p>
-            </div>
-            <span class="research-row__arrow" aria-hidden="true">→</span>
-          </li>
-          <li class="research-row reveal">
-            <span class="research-row__num">03</span>
-            <div class="research-row__body">
-              <h3>QUANTITATIVE SYSTEMS</h3>
-              <p>Market microstructure, simulation, statistical modelling and algorithmic trading.</p>
-            </div>
-            <span class="research-row__arrow" aria-hidden="true">→</span>
-          </li>
-          <li class="research-row reveal">
-            <span class="research-row__num">04</span>
-            <div class="research-row__body">
-              <h3>SCIENTIFIC COMPUTING</h3>
-              <p>Numerical methods, computational experiments and data-driven scientific analysis.</p>
-            </div>
-            <span class="research-row__arrow" aria-hidden="true">→</span>
-          </li>
-        </ul>
-      </div>
-    </section>
-
-    <!-- SELECTED WORK -->
+    <!-- ============================================= -->
+    <!-- WORK / EXPERIENCE                              -->
+    <!-- ============================================= -->
     <section id="work" class="section">
       <div class="container">
-        <h2 class="section__heading reveal">SELECTED WORK</h2>
+        <div class="section__header reveal">
+          <span class="section__number">02</span>
+          <span class="section__title">where I've worked</span>
+          <span class="section__line" aria-hidden="true"></span>
+        </div>
 
-        <ul class="project-list">
-          <li class="project-row reveal">
-            <a href="#" class="project-row__link" data-project-url>
-              <span class="project-row__num">01</span>
-              <div class="project-row__body">
-                <h3>PLANETX</h3>
-                <p>Exoplanet detection from astronomical light curves.</p>
-                <span class="project-row__stack">Python · PyTorch · Scientific Computing</span>
-              </div>
-              <span class="project-row__cta">VIEW PROJECT <span aria-hidden="true">→</span></span>
-            </a>
-          </li>
-          <li class="project-row reveal">
-            <a href="#" class="project-row__link" data-project-url>
-              <span class="project-row__num">02</span>
-              <div class="project-row__body">
-                <h3>MARKET-MAKING SIMULATOR</h3>
-                <p>Market microstructure and algorithmic market-making simulation.</p>
-                <span class="project-row__stack">Python · C++ · Probability · Quantitative Finance</span>
-              </div>
-              <span class="project-row__cta">VIEW PROJECT <span aria-hidden="true">→</span></span>
-            </a>
-          </li>
-          <li class="project-row reveal">
-            <a href="#" class="project-row__link" data-project-url>
-              <span class="project-row__num">03</span>
-              <div class="project-row__body">
-                <h3>CAUSAL INFERENCE ENGINE</h3>
-                <p>A system for exploring causal relationships through statistical experimentation.</p>
-                <span class="project-row__stack">Python · Statistics · Machine Learning</span>
-              </div>
-              <span class="project-row__cta">VIEW PROJECT <span aria-hidden="true">→</span></span>
-            </a>
-          </li>
-          <li class="project-row reveal">
-            <a href="#" class="project-row__link" data-project-url>
-              <span class="project-row__num">04</span>
-              <div class="project-row__body">
-                <h3>PROOFMESH</h3>
-                <p>Agentic AI / verification-oriented system.</p>
-                <span class="project-row__stack">Python · AI Agents · Graphs · Verification</span>
-              </div>
-              <span class="project-row__cta">VIEW PROJECT <span aria-hidden="true">→</span></span>
-            </a>
-          </li>
-          <li class="project-row reveal">
-            <a href="#" class="project-row__link" data-project-url>
-              <span class="project-row__num">05</span>
-              <div class="project-row__body">
-                <h3>SNIPIFY</h3>
-                <p>Developer-focused productivity tool.</p>
-                <span class="project-row__stack">Python · JavaScript · APIs</span>
-              </div>
-              <span class="project-row__cta">VIEW PROJECT <span aria-hidden="true">→</span></span>
-            </a>
-          </li>
-        </ul>
+        <div class="exp-card reveal">
+          <div class="exp-card__header">
+            <div>
+              <div class="exp-card__company">Independent</div>
+              <div class="exp-card__role">AI &amp; Software Engineer</div>
+            </div>
+            <div class="exp-card__period">2025 — Present</div>
+          </div>
+          <p class="exp-card__desc">Designing and building AI-native and software products from scratch. Working across application architecture, backend systems, AI workflows, APIs, deployment, and developer tooling. Focused on Agentic AI, intelligent systems, and high-performance engineering.</p>
+        </div>
       </div>
     </section>
 
-    <!-- CURRENTLY EXPLORING -->
-    <section class="section section--tight">
-      <div class="container">
-        <h2 class="section__heading reveal">CURRENTLY EXPLORING</h2>
-        <p class="explore__year reveal">2026</p>
+    <hr class="section__divider" />
 
-        <div class="explore-grid">
-          <div class="explore-item reveal">
-            <span class="explore-item__label">LEARNING</span>
-            <p>C++ / Data Structures / Systems</p>
+    <!-- ============================================= -->
+    <!-- PROJECTS                                      -->
+    <!-- ============================================= -->
+    <section id="projects" class="section">
+      <div class="container">
+        <div class="section__header reveal">
+          <span class="section__number">03</span>
+          <span class="section__title">Things I've Built</span>
+          <span class="section__line" aria-hidden="true"></span>
+        </div>
+
+        <!-- Featured Project -->
+        <div class="project-featured reveal">
+          <div class="project-featured__header">
+            <div class="project-featured__title">
+              ProofMesh
+              <span class="badge">Featured</span>
+            </div>
+            <a href="https://github.com/Qivoxe" target="_blank" rel="noopener" class="project-card__link" style="font-size:12px; color:var(--muted);">
+              View on GitHub <span aria-hidden="true">↗</span>
+            </a>
           </div>
-          <div class="explore-item reveal">
-            <span class="explore-item__label">BUILDING</span>
-            <p>High-performance quantitative systems</p>
+          <div class="project-featured__image">
+            <img src="https://placehold.co/1200x675/0f0f0f/4ade80?text=ProofMesh+%E2%80%94+AI+Evidence+Platform&font=ibm-plex-mono" alt="ProofMesh platform interface" loading="lazy" />
           </div>
-          <div class="explore-item reveal">
-            <span class="explore-item__label">RESEARCHING</span>
-            <p>Mathematics × Machine Learning</p>
+          <div class="project-featured__body">
+            <p class="project-featured__desc">An AI-assisted digital evidence and media forensics platform designed to analyze uploaded evidence, run forensic pipelines, and combine investigation results into structured evidence. Built for reliability, speed, and real-world forensic workflows.</p>
+            <div class="project-featured__tags">
+              <span class="tag">FastAPI</span>
+              <span class="tag">Python</span>
+              <span class="tag">AI</span>
+              <span class="tag">Computer Vision</span>
+              <span class="tag">OCR</span>
+              <span class="tag">Evidence Graph</span>
+              <span class="tag">REST API</span>
+              <span class="tag">Forensics</span>
+              <span class="tag">Backend Systems</span>
+            </div>
+            <div class="project-featured__actions">
+              <a href="https://github.com/Qivoxe" target="_blank" rel="noopener" class="btn btn--outline">
+                GitHub <span class="btn__arrow" aria-hidden="true">↗</span>
+              </a>
+              <a href="#" class="btn btn--outline">
+                Live Demo <span class="btn__arrow" aria-hidden="true">→</span>
+              </a>
+            </div>
           </div>
-          <div class="explore-item reveal">
-            <span class="explore-item__label">EXPERIMENTING</span>
-            <p>Agentic AI systems</p>
+        </div>
+
+        <!-- Project Grid -->
+        <div style="margin-top: 48px;">
+          <h3 class="section__title reveal" style="margin-bottom: 24px; font-size: 11px;">Built out of curiosity</h3>
+          <p class="reveal" style="color: var(--muted); font-size: 14px; margin-bottom: 32px; max-width: 52ch; line-height: 1.6;">Experiments, systems, and ideas I've turned into working software.</p>
+
+          <div class="projects-grid">
+            <!-- Market Making / HFT -->
+            <article class="project-card reveal">
+              <div class="project-card__title">
+                Market Making System
+                <span class="badge" style="font-size:8px; padding: 3px 8px;">Systems</span>
+              </div>
+              <p class="project-card__desc">A performance-oriented market-making system exploring trading signals, market data processing, strategy logic, and machine-learning-assisted decision making.</p>
+              <div class="project-card__tags">
+                <span class="project-card__tag">C++</span>
+                <span class="project-card__tag">Python</span>
+                <span class="project-card__tag">Machine Learning</span>
+                <span class="project-card__tag">Market Data</span>
+                <span class="project-card__tag">Trading Systems</span>
+              </div>
+              <div class="project-card__links">
+                <a href="https://github.com/Qivoxe" target="_blank" rel="noopener" class="project-card__link">GitHub ↗</a>
+                <a href="#" class="project-card__link">Details →</a>
+              </div>
+            </article>
+
+            <!-- Agentic AI -->
+            <article class="project-card reveal">
+              <div class="project-card__title">
+                Agentic AI Systems
+                <span class="badge" style="font-size:8px; padding: 3px 8px;">AI</span>
+              </div>
+              <p class="project-card__desc">Experiments and systems exploring multi-agent workflows, tool calling, stateful orchestration, LLM applications, and autonomous task execution.</p>
+              <div class="project-card__tags">
+                <span class="project-card__tag">Python</span>
+                <span class="project-card__tag">LangGraph</span>
+                <span class="project-card__tag">LangChain</span>
+                <span class="project-card__tag">LLMs</span>
+                <span class="project-card__tag">Agentic AI</span>
+                <span class="project-card__tag">RAG</span>
+              </div>
+              <div class="project-card__links">
+                <a href="https://github.com/Qivoxe" target="_blank" rel="noopener" class="project-card__link">GitHub ↗</a>
+                <a href="#" class="project-card__link">Details →</a>
+              </div>
+            </article>
+
+            <!-- AI Developer Tools -->
+            <article class="project-card reveal">
+              <div class="project-card__title">
+                AI Developer Tools
+              </div>
+              <p class="project-card__desc">Internal tooling and utilities for AI development workflows, experiment tracking, and LLM application scaffolding.</p>
+              <div class="project-card__tags">
+                <span class="project-card__tag">Python</span>
+                <span class="project-card__tag">TypeScript</span>
+                <span class="project-card__tag">FastAPI</span>
+                <span class="project-card__tag">Node.js</span>
+              </div>
+              <div class="project-card__links">
+                <a href="https://github.com/Qivoxe" target="_blank" rel="noopener" class="project-card__link">GitHub ↗</a>
+              </div>
+            </article>
+
+            <!-- Backend/API Experiments -->
+            <article class="project-card reveal">
+              <div class="project-card__title">
+                Backend &amp; API Experiments
+              </div>
+              <p class="project-card__desc">A collection of backend systems, REST APIs, and infrastructure experiments focused on performance, scalability, and clean architecture.</p>
+              <div class="project-card__tags">
+                <span class="project-card__tag">FastAPI</span>
+                <span class="project-card__tag">Node.js</span>
+                <span class="project-card__tag">PostgreSQL</span>
+                <span class="project-card__tag">Redis</span>
+                <span class="project-card__tag">Docker</span>
+              </div>
+              <div class="project-card__links">
+                <a href="https://github.com/Qivoxe" target="_blank" rel="noopener" class="project-card__link">GitHub ↗</a>
+              </div>
+            </article>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- RESEARCH NOTES -->
-    <section id="notes" class="section">
+    <hr class="section__divider" />
+
+    <!-- ============================================= -->
+    <!-- SKILLS                                        -->
+    <!-- ============================================= -->
+    <section id="skills" class="section">
       <div class="container">
-        <h2 class="section__heading reveal">RESEARCH NOTES</h2>
+        <div class="section__header reveal">
+          <span class="section__number">04</span>
+          <span class="section__title">Skills &amp; Technologies</span>
+          <span class="section__line" aria-hidden="true"></span>
+        </div>
 
-        <ul class="notes-list">
-          <li class="notes-row reveal">
-            <a href="#" data-note-url>
-              <span class="notes-row__num">01</span>
-              <span class="notes-row__title">Why Market Microstructure Matters</span>
-              <span class="notes-row__tag">Quantitative Systems / Notes</span>
-              <span class="notes-row__arrow" aria-hidden="true">→</span>
-            </a>
-          </li>
-          <li class="notes-row reveal">
-            <a href="#" data-note-url>
-              <span class="notes-row__num">02</span>
-              <span class="notes-row__title">Mathematics Behind Gradient Descent</span>
-              <span class="notes-row__tag">Machine Learning / Notes</span>
-              <span class="notes-row__arrow" aria-hidden="true">→</span>
-            </a>
-          </li>
-          <li class="notes-row reveal">
-            <a href="#" data-note-url>
-              <span class="notes-row__num">03</span>
-              <span class="notes-row__title">Designing Reliable AI Systems</span>
-              <span class="notes-row__tag">AI Systems / Notes</span>
-              <span class="notes-row__arrow" aria-hidden="true">→</span>
-            </a>
-          </li>
-        </ul>
-      </div>
-    </section>
-
-    <!-- ABOUT -->
-    <section class="section section--tight">
-      <div class="container about__grid">
         <div class="reveal">
-          <h2 class="section__heading">ABOUT</h2>
-          <p class="about__text">
-            I am Shivam Roy, a mathematics student interested in
-            building intelligent systems where mathematical reasoning,
-            machine learning and software engineering meet.
-          </p>
-        </div>
+          <div class="skills-group">
+            <div class="skills-group__title">Primary Languages</div>
+            <div class="skills-group__tags">
+              <span class="skill-tag">Python</span>
+              <span class="skill-tag">C++</span>
+              <span class="skill-tag">JavaScript</span>
+              <span class="skill-tag">TypeScript</span>
+            </div>
+          </div>
 
-        <div class="about__meta reveal">
-          <div class="about__meta-item">
-            <span class="about__meta-label">FOCUS</span>
-            <span>Mathematics · AI · Systems</span>
+          <div class="skills-group">
+            <div class="skills-group__title">AI / ML</div>
+            <div class="skills-group__tags">
+              <span class="skill-tag">Agentic AI</span>
+              <span class="skill-tag">LLMs</span>
+              <span class="skill-tag">LangChain</span>
+              <span class="skill-tag">LangGraph</span>
+              <span class="skill-tag">RAG</span>
+              <span class="skill-tag">Prompt Engineering</span>
+              <span class="skill-tag">AI Agents</span>
+            </div>
           </div>
-          <div class="about__meta-item">
-            <span class="about__meta-label">INTERESTS</span>
-            <span>ML · Quant · Scientific Computing</span>
+
+          <div class="skills-group">
+            <div class="skills-group__title">Backend</div>
+            <div class="skills-group__tags">
+              <span class="skill-tag">FastAPI</span>
+              <span class="skill-tag">Node.js</span>
+              <span class="skill-tag">Express.js</span>
+              <span class="skill-tag">REST APIs</span>
+              <span class="skill-tag">PostgreSQL</span>
+              <span class="skill-tag">MongoDB</span>
+              <span class="skill-tag">Redis</span>
+            </div>
           </div>
-          <div class="about__meta-item">
-            <span class="about__meta-label">BUILDING</span>
-            <span>Software · Research · Experiments</span>
+
+          <div class="skills-group">
+            <div class="skills-group__title">Frontend</div>
+            <div class="skills-group__tags">
+              <span class="skill-tag">React</span>
+              <span class="skill-tag">Next.js</span>
+              <span class="skill-tag">HTML</span>
+              <span class="skill-tag">CSS</span>
+              <span class="skill-tag">Tailwind CSS</span>
+            </div>
+          </div>
+
+          <div class="skills-group">
+            <div class="skills-group__title">Systems / DevOps</div>
+            <div class="skills-group__tags">
+              <span class="skill-tag">Linux</span>
+              <span class="skill-tag">Docker</span>
+              <span class="skill-tag">Git</span>
+              <span class="skill-tag">GitHub</span>
+              <span class="skill-tag">GitHub Actions</span>
+              <span class="skill-tag">Nginx</span>
+            </div>
+          </div>
+
+          <div class="skills-group">
+            <div class="skills-group__title">Tools</div>
+            <div class="skills-group__tags">
+              <span class="skill-tag">Postman</span>
+              <span class="skill-tag">Figma</span>
+              <span class="skill-tag">Vercel</span>
+            </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- CV -->
-    <section id="cv" class="section section--tight">
+    <hr class="section__divider" />
+
+    <!-- ============================================= -->
+    <!-- GITHUB ACTIVITY                                -->
+    <!-- ============================================= -->
+    <section id="github" class="section">
       <div class="container">
-        <h2 class="section__heading reveal">CURRICULUM VITAE</h2>
+        <div class="section__header reveal">
+          <span class="section__number">05</span>
+          <span class="section__title">in code</span>
+          <span class="section__line" aria-hidden="true"></span>
+        </div>
 
-        <div class="cv-block reveal">
-          <div class="cv-block__item">
-            <span class="cv-block__label">Education</span>
-            <span>B.Sc. (Hons.) Mathematics</span>
-          </div>
-          <div class="cv-block__item">
-            <span class="cv-block__label">Interests</span>
-            <span>Machine Learning · AI · Quantitative Systems</span>
+        <div class="github-card reveal">
+          <div class="github-card__header">
+            <div class="github-card__title">GitHub Activity</div>
+            <a href="https://github.com/Qivoxe" target="_blank" rel="noopener" class="github-card__link">
+              @Qivoxe <span aria-hidden="true">↗</span>
+            </a>
           </div>
 
-          <div class="cv-block__actions">
-            <a href="assets/cv/shivam-roy-cv.pdf" target="_blank" rel="noopener">VIEW CV →</a>
-            <a href="assets/cv/shivam-roy-cv.pdf" download>DOWNLOAD CV →</a>
+          <div class="github-contributions" id="contribGraph" aria-label="GitHub contribution graph">
+            <!-- Generated by JS -->
+          </div>
+
+          <div class="github-card__footer">
+            <div class="github-card__stats" id="contribStats">Loading contributions…</div>
+            <div class="github-card__legend">
+              <span>Less</span>
+              <span class="legend-dot" style="background: var(--border);"></span>
+              <span class="legend-dot" style="background: rgba(74,222,128,0.2);"></span>
+              <span class="legend-dot" style="background: rgba(74,222,128,0.4);"></span>
+              <span class="legend-dot" style="background: rgba(74,222,128,0.6);"></span>
+              <span class="legend-dot" style="background: rgba(74,222,128,0.85);"></span>
+              <span>More</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <hr class="section__divider" />
+
+    <!-- ============================================= -->
+    <!-- CONTACT                                        -->
+    <!-- ============================================= -->
+    <section id="contact" class="section">
+      <div class="container">
+        <div class="contact-card reveal">
+          <h2 class="contact-card__heading">Let's build something.</h2>
+          <p class="contact-card__text">Got an interesting idea, internship opportunity, collaboration, or just want to talk engineering? My inbox is open.</p>
+          <div class="contact-card__actions">
+            <a href="mailto:hello@royshiv.me" class="btn btn--primary">
+              Email <span class="btn__arrow" aria-hidden="true">→</span>
+            </a>
+            <a href="https://github.com/Qivoxe" target="_blank" rel="noopener" class="btn btn--outline">GitHub</a>
+            <a href="https://x.com" target="_blank" rel="noopener" class="btn btn--outline">X</a>
+            <a href="https://linkedin.com/in/shivam-9352b1374" target="_blank" rel="noopener" class="btn btn--outline">LinkedIn</a>
           </div>
         </div>
       </div>
@@ -338,37 +484,19 @@
 
   </main>
 
+  <!-- ============================================= -->
+  <!-- FOOTER                                        -->
+  <!-- ============================================= -->
   <footer class="footer">
     <div class="container footer__inner">
-      <div class="footer__brand">
-        <span class="footer__name">SHIVAM ROY</span>
-        <span class="footer__tag">MATHEMATICS × AI × SYSTEMS</span>
-      </div>
-
-      <div class="footer__links">
-        <a href="https://github.com/Qivoxe" target="_blank" rel="noopener">GitHub</a>
-        <a href="https://linkedin.com/in/shivam-9352b1374" target="_blank" rel="noopener">LinkedIn</a>
-        <a href="mailto:hello@royshiv.me">Email</a>
-        <a href="assets/cv/shivam-roy-cv.pdf" target="_blank" rel="noopener">CV</a>
-      </div>
-
-      <div class="footer__bottom">
-        <span>© 2026 Shivam Roy</span>
-        <button id="replayIntro" class="footer__replay" type="button">REPLAY INTRO ↗</button>
+      <div class="footer__text">© 2026 Shivam Kumar. Built with ♥ and hardwork.</div>
+      <div class="footer__status">
+        <span class="status-dot" aria-hidden="true"></span>
+        <span id="localTime">India • Loading…</span>
       </div>
     </div>
   </footer>
 
-</div>
-
-<!-- No-JS fallback: reveal the site immediately if scripts are disabled -->
-<noscript>
-  <style>
-    #boot { display: none !important; }
-    #site { display: block !important; }
-  </style>
-</noscript>
-
-<script src="script.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>
