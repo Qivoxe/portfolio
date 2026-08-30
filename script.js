@@ -247,82 +247,137 @@ document.addEventListener('DOMContentLoaded', () => {
   initGithubActivity();
   initLocalTime();
   initSmoothScroll();
-  initCat();
+  initMansi();
 });
 
 /* -----------------------------------------------------
-   CAT — CURSOR CHASING COMPANION
+   MANSI — CURSOR CHASING CAT
    ----------------------------------------------------- */
-function initCat() {
+function initMansi() {
   if (prefersReducedMotion) return;
 
   const isTouchDevice = window.matchMedia('(hover: none), (pointer: coarse)').matches;
   if (isTouchDevice) return;
 
-  const cat = document.getElementById('cursorCat');
-  if (!cat) return;
+  const mansi = document.getElementById('mansi');
+  if (!mansi) return;
 
-  const flipper = cat.querySelector('.cat__flipper');
+  const flipper = mansi.querySelector('.mansi__flipper');
 
   let mouseX = window.innerWidth / 2;
   let mouseY = window.innerHeight / 2;
-  let catX = mouseX - 25;
-  let catY = mouseY + 20;
+  let catX = mouseX - 20;
+  let catY = mouseY + 15;
+  let velocityX = 0;
+  let velocityY = 0;
   let lastMouseMove = 0;
+  let isRunning = false;
   let isIdle = false;
 
   const LERP = 0.08;
-  const OFFSET_X = 25;
-  const OFFSET_Y = 20;
+  const OFFSET_X = 20;
+  const OFFSET_Y = 15;
   const IDLE_DELAY = 300;
-  const SNAP_DISTANCE = 1;
+  const SNAP_DISTANCE = 1.5;
   const DIRECTION_THRESHOLD = 2;
+  const MAX_SPEED = 18;
+  const ACCELERATION = 0.35;
+  const FRICTION = 0.85;
 
-  cat.style.transform = `translate(${catX}px, ${catY}px)`;
+  mansi.style.transform = `translate(${catX}px, ${catY}px)`;
 
   function onMouseMove(e) {
     mouseX = e.clientX;
     mouseY = e.clientY;
     lastMouseMove = performance.now();
 
-    if (isIdle) {
+    if (isIdle || !isRunning) {
+      isRunning = true;
       isIdle = false;
-      cat.classList.remove('is-idle');
+      mansi.classList.add('is-running');
+      mansi.classList.remove('is-idle');
     }
   }
 
   window.addEventListener('mousemove', onMouseMove, { passive: true });
 
   window.addEventListener('touchstart', () => {
-    cat.style.display = 'none';
+    mansi.style.display = 'none';
   }, { once: true });
+
+  window.addEventListener('mouseleave', () => {
+    isRunning = false;
+    mansi.classList.remove('is-running');
+  });
+
+  window.addEventListener('mouseenter', () => {
+    if (performance.now() - lastMouseMove < 1000) {
+      isRunning = true;
+      mansi.classList.add('is-running');
+      mansi.classList.remove('is-idle');
+    }
+  });
 
   function animate() {
     const targetX = mouseX - OFFSET_X;
     const targetY = mouseY + OFFSET_Y;
-
-    catX += (targetX - catX) * LERP;
-    catY += (targetY - catY) * LERP;
 
     const dx = targetX - catX;
     const dy = targetY - catY;
     const distance = Math.sqrt(dx * dx + dy * dy);
 
     if (distance > DIRECTION_THRESHOLD) {
+      const ax = dx * ACCELERATION;
+      const ay = dy * ACCELERATION;
+
+      velocityX += ax;
+      velocityY += ay;
+
+      const speed = Math.sqrt(velocityX * velocityX + velocityY * velocityY);
+      if (speed > MAX_SPEED) {
+        velocityX = (velocityX / speed) * MAX_SPEED;
+        velocityY = (velocityY / speed) * MAX_SPEED;
+      }
+
+      catX += velocityX;
+      catY += velocityY;
+
+      velocityX *= FRICTION;
+      velocityY *= FRICTION;
+
       const facingRight = dx > 0;
-      flipper.style.transform = `scaleX(${facingRight ? -1 : 1})`;
+      flipper.style.transform = `scaleX(${facingRight ? 1 : -1})`;
+    } else {
+      velocityX *= 0.5;
+      velocityY *= 0.5;
+      catX += velocityX;
+      catY += velocityY;
+
+      if (Math.abs(velocityX) < 0.1 && Math.abs(velocityY) < 0.1) {
+        velocityX = 0;
+        velocityY = 0;
+      }
     }
 
-    if (!isIdle && performance.now() - lastMouseMove > IDLE_DELAY) {
+    const speed = Math.sqrt(velocityX * velocityX + velocityY * velocityY);
+
+    if (isRunning && speed < 0.3 && distance < SNAP_DISTANCE) {
+      isRunning = false;
+      isIdle = true;
+      mansi.classList.remove('is-running');
+      mansi.classList.add('is-idle');
+    }
+
+    if (!isRunning && performance.now() - lastMouseMove > IDLE_DELAY) {
       const remainingX = Math.abs(targetX - catX);
       const remainingY = Math.abs(targetY - catY);
       if (remainingX < SNAP_DISTANCE && remainingY < SNAP_DISTANCE) {
         isIdle = true;
-        cat.classList.add('is-idle');
+        mansi.classList.add('is-idle');
       }
     }
 
-    cat.style.transform = `translate(${catX}px, ${catY}px)`;
+    mansi.style.transform = `translate(${catX}px, ${catY}px)`;
     requestAnimationFrame(animate);
   }
 

@@ -61,7 +61,7 @@
       <div class="container">
         <div class="hero__grid">
           <div class="hero__text reveal">
-            <p class="hero__eyebrow">Learning relentlessly.</p>
+            <div class="hero__eyebrow"><span>Learning relentlessly.</span></div>
             <h1 class="hero__title">Shivam.</h1>
             <p class="hero__lede">AI / Agentic AI Engineer &amp; Software Developer.</p>
             <p class="hero__subtitle">Building intelligent systems, backend infrastructure, and products that solve real problems. Currently exploring Agentic AI, distributed systems, C++, and high-performance engineering.</p>
@@ -222,7 +222,7 @@
             </a>
           </div>
           <div class="project-featured__image">
-            <img src="https://placehold.co/1200x675/0f0f0f/4ade80?text=ProofMesh+%E2%80%94+AI+Evidence+Platform&font=ibm-plex-mono" alt="ProofMesh platform interface" loading="lazy" />
+            <img src="https://placehold.co/1200x675/0f0f0f/ededf0?text=ProofMesh+%E2%80%94+AI+Evidence+Platform&font=ibm-plex-mono" alt="ProofMesh platform interface" loading="lazy" />
           </div>
           <div class="project-featured__body">
             <p class="project-featured__desc">An AI-assisted digital evidence and media forensics platform designed to analyze uploaded evidence, run forensic pipelines, and combine investigation results into structured evidence. Built for reliability, speed, and real-world forensic workflows.</p>
@@ -249,87 +249,78 @@
         </div>
 
         <!-- Project Grid -->
-        <div style="margin-top: 48px;">
-          <h3 class="section__title reveal" style="margin-bottom: 24px; font-size: 11px;">Built out of curiosity</h3>
-          <p class="reveal" style="color: var(--muted); font-size: 14px; margin-bottom: 32px; max-width: 52ch; line-height: 1.6;">Experiments, systems, and ideas I've turned into working software.</p>
+        <div class="projects-grid" style="margin-top: 48px;">
+          <!-- Market Making / HFT -->
+          <article class="project-card reveal">
+            <div class="project-card__title">
+              Market Making System
+            </div>
+            <p class="project-card__desc">A performance-oriented market-making system exploring trading signals, market data processing, strategy logic, and machine-learning-assisted decision making.</p>
+            <div class="project-card__tags">
+              <span class="project-card__tag">C++</span>
+              <span class="project-card__tag">Python</span>
+              <span class="project-card__tag">Machine Learning</span>
+              <span class="project-card__tag">Market Data</span>
+              <span class="project-card__tag">Trading Systems</span>
+            </div>
+            <div class="project-card__links">
+              <a href="https://github.com/Qivoxe" target="_blank" rel="noopener" class="project-card__link">GitHub ↗</a>
+            </div>
+          </article>
 
-          <div class="projects-grid">
-            <!-- Market Making / HFT -->
-            <article class="project-card reveal">
-              <div class="project-card__title">
-                Market Making System
-                <span class="badge" style="font-size:8px; padding: 3px 8px;">Systems</span>
-              </div>
-              <p class="project-card__desc">A performance-oriented market-making system exploring trading signals, market data processing, strategy logic, and machine-learning-assisted decision making.</p>
-              <div class="project-card__tags">
-                <span class="project-card__tag">C++</span>
-                <span class="project-card__tag">Python</span>
-                <span class="project-card__tag">Machine Learning</span>
-                <span class="project-card__tag">Market Data</span>
-                <span class="project-card__tag">Trading Systems</span>
-              </div>
-              <div class="project-card__links">
-                <a href="https://github.com/Qivoxe" target="_blank" rel="noopener" class="project-card__link">GitHub ↗</a>
-                <a href="#" class="project-card__link">Details →</a>
-              </div>
-            </article>
+          <!-- Agentic AI -->
+          <article class="project-card reveal">
+            <div class="project-card__title">
+              Agentic AI Systems
+            </div>
+            <p class="project-card__desc">Experiments and systems exploring multi-agent workflows, tool calling, stateful orchestration, LLM applications, and autonomous task execution.</p>
+            <div class="project-card__tags">
+              <span class="project-card__tag">Python</span>
+              <span class="project-card__tag">LangGraph</span>
+              <span class="project-card__tag">LangChain</span>
+              <span class="project-card__tag">LLMs</span>
+              <span class="project-card__tag">Agentic AI</span>
+              <span class="project-card__tag">RAG</span>
+            </div>
+            <div class="project-card__links">
+              <a href="https://github.com/Qivoxe" target="_blank" rel="noopener" class="project-card__link">GitHub ↗</a>
+            </div>
+          </article>
 
-            <!-- Agentic AI -->
-            <article class="project-card reveal">
-              <div class="project-card__title">
-                Agentic AI Systems
-                <span class="badge" style="font-size:8px; padding: 3px 8px;">AI</span>
-              </div>
-              <p class="project-card__desc">Experiments and systems exploring multi-agent workflows, tool calling, stateful orchestration, LLM applications, and autonomous task execution.</p>
-              <div class="project-card__tags">
-                <span class="project-card__tag">Python</span>
-                <span class="project-card__tag">LangGraph</span>
-                <span class="project-card__tag">LangChain</span>
-                <span class="project-card__tag">LLMs</span>
-                <span class="project-card__tag">Agentic AI</span>
-                <span class="project-card__tag">RAG</span>
-              </div>
-              <div class="project-card__links">
-                <a href="https://github.com/Qivoxe" target="_blank" rel="noopener" class="project-card__link">GitHub ↗</a>
-                <a href="#" class="project-card__link">Details →</a>
-              </div>
-            </article>
+          <!-- AI Developer Tools -->
+          <article class="project-card reveal">
+            <div class="project-card__title">
+              AI Developer Tools
+            </div>
+            <p class="project-card__desc">Internal tooling and utilities for AI development workflows, experiment tracking, and LLM application scaffolding.</p>
+            <div class="project-card__tags">
+              <span class="project-card__tag">Python</span>
+              <span class="project-card__tag">TypeScript</span>
+              <span class="project-card__tag">FastAPI</span>
+              <span class="project-card__tag">Node.js</span>
+            </div>
+            <div class="project-card__links">
+              <a href="https://github.com/Qivoxe" target="_blank" rel="noopener" class="project-card__link">GitHub ↗</a>
+            </div>
+          </article>
 
-            <!-- AI Developer Tools -->
-            <article class="project-card reveal">
-              <div class="project-card__title">
-                AI Developer Tools
-              </div>
-              <p class="project-card__desc">Internal tooling and utilities for AI development workflows, experiment tracking, and LLM application scaffolding.</p>
-              <div class="project-card__tags">
-                <span class="project-card__tag">Python</span>
-                <span class="project-card__tag">TypeScript</span>
-                <span class="project-card__tag">FastAPI</span>
-                <span class="project-card__tag">Node.js</span>
-              </div>
-              <div class="project-card__links">
-                <a href="https://github.com/Qivoxe" target="_blank" rel="noopener" class="project-card__link">GitHub ↗</a>
-              </div>
-            </article>
-
-            <!-- Backend/API Experiments -->
-            <article class="project-card reveal">
-              <div class="project-card__title">
-                Backend &amp; API Experiments
-              </div>
-              <p class="project-card__desc">A collection of backend systems, REST APIs, and infrastructure experiments focused on performance, scalability, and clean architecture.</p>
-              <div class="project-card__tags">
-                <span class="project-card__tag">FastAPI</span>
-                <span class="project-card__tag">Node.js</span>
-                <span class="project-card__tag">PostgreSQL</span>
-                <span class="project-card__tag">Redis</span>
-                <span class="project-card__tag">Docker</span>
-              </div>
-              <div class="project-card__links">
-                <a href="https://github.com/Qivoxe" target="_blank" rel="noopener" class="project-card__link">GitHub ↗</a>
-              </div>
-            </article>
-          </div>
+          <!-- Backend/API Experiments -->
+          <article class="project-card reveal">
+            <div class="project-card__title">
+              Backend &amp; API Experiments
+            </div>
+            <p class="project-card__desc">A collection of backend systems, REST APIs, and infrastructure experiments focused on performance, scalability, and clean architecture.</p>
+            <div class="project-card__tags">
+              <span class="project-card__tag">FastAPI</span>
+              <span class="project-card__tag">Node.js</span>
+              <span class="project-card__tag">PostgreSQL</span>
+              <span class="project-card__tag">Redis</span>
+              <span class="project-card__tag">Docker</span>
+            </div>
+            <div class="project-card__links">
+              <a href="https://github.com/Qivoxe" target="_blank" rel="noopener" class="project-card__link">GitHub ↗</a>
+            </div>
+          </article>
         </div>
       </div>
     </section>
@@ -464,7 +455,7 @@
           <h2 class="contact-card__heading">Let's build something.</h2>
           <p class="contact-card__text">Got an interesting idea, internship opportunity, collaboration, or just want to talk engineering? My inbox is open.</p>
           <div class="contact-card__actions">
-            <a href="shivamthechad@gmail.com" class="btn btn--primary">
+            <a href="mailto:shivamthechad@gmail.com" class="btn btn--primary">
               Email <span class="btn__arrow" aria-hidden="true">→</span>
             </a>
             <a href="https://github.com/Qivoxe" target="_blank" rel="noopener" class="btn btn--outline">GitHub</a>
@@ -491,28 +482,28 @@
   </footer>
 
   <!-- ============================================= -->
-  <!-- CAT — CURSOR CHASING COMPANION                 -->
+  <!-- MANSI — CURSOR CHASING CAT                     -->
   <!-- ============================================= -->
-  <div id="cursorCat" class="cat" aria-hidden="true">
-    <div class="cat__flipper">
-      <div class="cat__bobber">
-        <div class="cat__tooltip">Cat 🐱</div>
-        <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-          <ellipse cx="18" cy="22" rx="9" ry="7" fill="#2a2a2a" opacity="0.9"/>
-          <ellipse cx="18" cy="23" rx="6" ry="4.5" fill="#1a1a1a" opacity="0.95"/>
-          <circle cx="18" cy="14" r="7" fill="#2a2a2a"/>
-          <polygon points="12,10 10,3 15,9" fill="#2a2a2a" class="cat__ear cat__ear--left"/>
-          <polygon points="24,10 26,3 21,9" fill="#2a2a2a" class="cat__ear cat__ear--right"/>
-          <circle cx="15.5" cy="13.5" r="1.2" fill="#4ade80" class="cat__eye cat__eye--left"/>
-          <circle cx="20.5" cy="13.5" r="1.2" fill="#4ade80" class="cat__eye cat__eye--right"/>
-          <ellipse cx="18" cy="16" rx="1" ry="0.8" fill="#555" class="cat__nose"/>
-          <line x1="14" y1="16" x2="18" y2="16.5" stroke="#555" stroke-width="0.8" stroke-linecap="round"/>
-          <line x1="18" y1="16.5" x2="22" y2="16" stroke="#555" stroke-width="0.8" stroke-linecap="round"/>
-          <path d="M 13 26 L 11 32" stroke="#2a2a2a" stroke-width="1.8" stroke-linecap="round" class="cat__leg cat__leg--fl"/>
-          <path d="M 23 26 L 25 32" stroke="#2a2a2a" stroke-width="1.8" stroke-linecap="round" class="cat__leg cat__leg--fr"/>
-          <path d="M 16 26 L 15 32" stroke="#2a2a2a" stroke-width="1.8" stroke-linecap="round" class="cat__leg cat__leg--bl"/>
-          <path d="M 20 26 L 21 32" stroke="#2a2a2a" stroke-width="1.8" stroke-linecap="round" class="cat__leg cat__leg--br"/>
-          <path d="M 25 22 Q 30 20 29 24" stroke="#2a2a2a" stroke-width="2" stroke-linecap="round" fill="none" class="cat__tail"/>
+  <div id="mansi" class="mansi" aria-hidden="true">
+    <div class="mansi__flipper">
+      <div class="mansi__bobber">
+        <div class="mansi__tooltip">Mansi 🐈</div>
+        <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <ellipse cx="16" cy="20" rx="7" ry="5" fill="#e4e4e7" class="mansi__body"/>
+          <ellipse cx="16" cy="21" rx="5" ry="3.5" fill="#f4f4f5" class="mansi__belly"/>
+          <circle cx="16" cy="13" r="6" fill="#e4e4e7" class="mansi__head"/>
+          <polygon points="11,9 9,3 14,8" fill="#e4e4e7" class="mansi__ear mansi__ear--left"/>
+          <polygon points="21,9 23,3 18,8" fill="#e4e4e7" class="mansi__ear mansi__ear--right"/>
+          <circle cx="13.5" cy="12.5" r="1" fill="#18181b" class="mansi__eye mansi__eye--left"/>
+          <circle cx="18.5" cy="12.5" r="1" fill="#18181b" class="mansi__eye mansi__eye--right"/>
+          <ellipse cx="16" cy="14.5" rx="0.8" ry="0.6" fill="#a1a1aa" class="mansi__nose"/>
+          <line x1="12" y1="14.5" x2="16" y2="15" stroke="#a1a1aa" stroke-width="0.7" stroke-linecap="round"/>
+          <line x1="16" y1="15" x2="20" y2="14.5" stroke="#a1a1aa" stroke-width="0.7" stroke-linecap="round"/>
+          <path d="M 12 24 L 10 30" stroke="#e4e4e7" stroke-width="1.6" stroke-linecap="round" class="mansi__leg mansi__leg--fl"/>
+          <path d="M 20 24 L 22 30" stroke="#e4e4e7" stroke-width="1.6" stroke-linecap="round" class="mansi__leg mansi__leg--fr"/>
+          <path d="M 14 24 L 13 30" stroke="#e4e4e7" stroke-width="1.6" stroke-linecap="round" class="mansi__leg mansi__leg--bl"/>
+          <path d="M 18 24 L 19 30" stroke="#e4e4e7" stroke-width="1.6" stroke-linecap="round" class="mansi__leg mansi__leg--br"/>
+          <path d="M 23 19 Q 28 17 27 21" stroke="#e4e4e7" stroke-width="1.8" stroke-linecap="round" fill="none" class="mansi__tail"/>
         </svg>
       </div>
     </div>
