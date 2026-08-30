@@ -12,6 +12,27 @@ const prefersReducedMotion = window.matchMedia(
 ).matches;
 
 /* -----------------------------------------------------
+   THEME TOGGLE
+   ----------------------------------------------------- */
+function initTheme() {
+  const toggle = document.getElementById('themeToggle');
+  if (!toggle) return;
+
+  const stored = localStorage.getItem('theme');
+  const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  const initial = stored || (prefersDark ? 'dark' : 'light');
+
+  document.documentElement.setAttribute('data-theme', initial);
+
+  toggle.addEventListener('click', () => {
+    const current = document.documentElement.getAttribute('data-theme');
+    const next = current === 'dark' ? 'light' : 'dark';
+    document.documentElement.setAttribute('data-theme', next);
+    localStorage.setItem('theme', next);
+  });
+}
+
+/* -----------------------------------------------------
    NAVIGATION
    ----------------------------------------------------- */
 function initNavigation() {
@@ -21,7 +42,6 @@ function initNavigation() {
   const navLinks = document.querySelectorAll('.nav__links a, .nav__mobile a');
   const sections = document.querySelectorAll('section[id]');
 
-  // Scroll behavior: hide/show nav
   let lastScroll = 0;
   let ticking = false;
 
@@ -36,7 +56,6 @@ function initNavigation() {
           nav.classList.remove('is-scrolled');
         }
 
-        // Hide on scroll down, show on scroll up (after initial scroll)
         if (currentScroll > 300) {
           if (currentScroll > lastScroll + 8) {
             nav.classList.add('is-hidden');
@@ -54,7 +73,6 @@ function initNavigation() {
     }
   });
 
-  // Mobile menu toggle
   toggle.addEventListener('click', () => {
     const isOpen = mobileNav.classList.toggle('is-open');
     toggle.classList.toggle('is-open', isOpen);
@@ -63,7 +81,6 @@ function initNavigation() {
     document.body.style.overflow = isOpen ? 'hidden' : '';
   });
 
-  // Close mobile nav on link click
   mobileNav.querySelectorAll('a').forEach((link) => {
     link.addEventListener('click', () => {
       mobileNav.classList.remove('is-open');
@@ -74,7 +91,6 @@ function initNavigation() {
     });
   });
 
-  // Active section highlighting
   const observerOptions = {
     root: null,
     rootMargin: '-20% 0px -70% 0px',
@@ -149,7 +165,6 @@ async function initGithubActivity() {
     const days = Object.values(contributionData);
     const totalContributions = days.reduce((sum, count) => sum + count, 0);
 
-    // Generate ~365 days of contribution squares
     const squares = [];
     const today = new Date();
     const maxVal = Math.max(...days, 1);
@@ -175,7 +190,6 @@ async function initGithubActivity() {
     stats.textContent = `${totalContributions} contributions in the last year`;
 
   } catch (err) {
-    // Fallback: generate a decorative contribution grid
     const squares = [];
     for (let i = 0; i < 365; i++) {
       const level = Math.random() > 0.7 ? Math.floor(Math.random() * 4) + 1 : 0;
@@ -242,144 +256,10 @@ function initSmoothScroll() {
    INIT
    ----------------------------------------------------- */
 document.addEventListener('DOMContentLoaded', () => {
+  initTheme();
   initNavigation();
   initScrollReveal();
   initGithubActivity();
   initLocalTime();
   initSmoothScroll();
-  initMansi();
 });
-
-/* -----------------------------------------------------
-   MANSI — CURSOR CHASING CAT
-   ----------------------------------------------------- */
-function initMansi() {
-  if (prefersReducedMotion) return;
-
-  const isTouchDevice = window.matchMedia('(hover: none), (pointer: coarse)').matches;
-  if (isTouchDevice) return;
-
-  const mansi = document.getElementById('mansi');
-  if (!mansi) return;
-
-  const flipper = mansi.querySelector('.mansi__flipper');
-
-  let mouseX = window.innerWidth / 2;
-  let mouseY = window.innerHeight / 2;
-  let catX = mouseX - 20;
-  let catY = mouseY + 15;
-  let velocityX = 0;
-  let velocityY = 0;
-  let lastMouseMove = 0;
-  let isRunning = false;
-  let isIdle = false;
-
-  const LERP = 0.08;
-  const OFFSET_X = 20;
-  const OFFSET_Y = 15;
-  const IDLE_DELAY = 300;
-  const SNAP_DISTANCE = 1.5;
-  const DIRECTION_THRESHOLD = 2;
-  const MAX_SPEED = 18;
-  const ACCELERATION = 0.35;
-  const FRICTION = 0.85;
-
-  mansi.style.transform = `translate(${catX}px, ${catY}px)`;
-
-  function onMouseMove(e) {
-    mouseX = e.clientX;
-    mouseY = e.clientY;
-    lastMouseMove = performance.now();
-
-    if (isIdle || !isRunning) {
-      isRunning = true;
-      isIdle = false;
-      mansi.classList.add('is-running');
-      mansi.classList.remove('is-idle');
-    }
-  }
-
-  window.addEventListener('mousemove', onMouseMove, { passive: true });
-
-  window.addEventListener('touchstart', () => {
-    mansi.style.display = 'none';
-  }, { once: true });
-
-  window.addEventListener('mouseleave', () => {
-    isRunning = false;
-    mansi.classList.remove('is-running');
-  });
-
-  window.addEventListener('mouseenter', () => {
-    if (performance.now() - lastMouseMove < 1000) {
-      isRunning = true;
-      mansi.classList.add('is-running');
-      mansi.classList.remove('is-idle');
-    }
-  });
-
-  function animate() {
-    const targetX = mouseX - OFFSET_X;
-    const targetY = mouseY + OFFSET_Y;
-
-    const dx = targetX - catX;
-    const dy = targetY - catY;
-    const distance = Math.sqrt(dx * dx + dy * dy);
-
-    if (distance > DIRECTION_THRESHOLD) {
-      const ax = dx * ACCELERATION;
-      const ay = dy * ACCELERATION;
-
-      velocityX += ax;
-      velocityY += ay;
-
-      const speed = Math.sqrt(velocityX * velocityX + velocityY * velocityY);
-      if (speed > MAX_SPEED) {
-        velocityX = (velocityX / speed) * MAX_SPEED;
-        velocityY = (velocityY / speed) * MAX_SPEED;
-      }
-
-      catX += velocityX;
-      catY += velocityY;
-
-      velocityX *= FRICTION;
-      velocityY *= FRICTION;
-
-      const facingRight = dx > 0;
-      flipper.style.transform = `scaleX(${facingRight ? 1 : -1})`;
-    } else {
-      velocityX *= 0.5;
-      velocityY *= 0.5;
-      catX += velocityX;
-      catY += velocityY;
-
-      if (Math.abs(velocityX) < 0.1 && Math.abs(velocityY) < 0.1) {
-        velocityX = 0;
-        velocityY = 0;
-      }
-    }
-
-    const speed = Math.sqrt(velocityX * velocityX + velocityY * velocityY);
-
-    if (isRunning && speed < 0.3 && distance < SNAP_DISTANCE) {
-      isRunning = false;
-      isIdle = true;
-      mansi.classList.remove('is-running');
-      mansi.classList.add('is-idle');
-    }
-
-    if (!isRunning && performance.now() - lastMouseMove > IDLE_DELAY) {
-      const remainingX = Math.abs(targetX - catX);
-      const remainingY = Math.abs(targetY - catY);
-      if (remainingX < SNAP_DISTANCE && remainingY < SNAP_DISTANCE) {
-        isIdle = true;
-        mansi.classList.add('is-idle');
-      }
-    }
-
-    mansi.style.transform = `translate(${catX}px, ${catY}px)`;
-    requestAnimationFrame(animate);
-  }
-
-  requestAnimationFrame(animate);
-}
