@@ -5,6 +5,14 @@
 
 const CONFIG = {
   githubUsername: 'Qivoxe',
+
+  /* -------------------------------------------------
+     TODO(Contra): paste your Contra profile URL between
+     the quotes, e.g. 'https://contra.com/shivamroy'.
+     Every "Work with me on Contra" / "Contra" button on
+     the page will link there automatically.
+     ------------------------------------------------- */
+  contraUrl: '',
 };
 
 const prefersReducedMotion = window.matchMedia(
@@ -72,6 +80,17 @@ function initNavigation() {
       toggle.setAttribute('aria-label', 'Open menu');
       document.body.style.overflow = '';
     });
+  });
+
+  // Close mobile nav on Escape (keyboard accessibility)
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && mobileNav.classList.contains('is-open')) {
+      mobileNav.classList.remove('is-open');
+      toggle.classList.remove('is-open');
+      toggle.setAttribute('aria-expanded', 'false');
+      toggle.setAttribute('aria-label', 'Open menu');
+      document.body.style.overflow = '';
+    }
   });
 
   // Active section highlighting
@@ -191,6 +210,48 @@ async function initGithubActivity() {
 }
 
 /* -----------------------------------------------------
+   PROJECT FILTERS
+   ----------------------------------------------------- */
+function initProjectFilters() {
+  const bar = document.querySelector('.filter-bar');
+  if (!bar) return;
+
+  const buttons = bar.querySelectorAll('.filter-btn');
+  const cards = document.querySelectorAll('#projects .project-card, #projects .project-featured');
+
+  buttons.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      buttons.forEach((b) => {
+        const isActive = b === btn;
+        b.classList.toggle('is-active', isActive);
+        b.setAttribute('aria-pressed', String(isActive));
+      });
+
+      const filter = btn.dataset.filter;
+
+      cards.forEach((card) => {
+        const categories = (card.dataset.category || '').split(' ');
+        const show = filter === 'all' || categories.includes(filter);
+        card.classList.toggle('is-hidden', !show);
+      });
+    });
+  });
+}
+
+/* -----------------------------------------------------
+   CONTRA LINKS
+   ----------------------------------------------------- */
+function initContraLinks() {
+  const url = (CONFIG.contraUrl || '').trim();
+  if (!url) return; // leave the placeholder buttons inert (title tooltip explains why)
+
+  document.querySelectorAll('.js-contra-link').forEach((link) => {
+    link.href = url;
+    link.removeAttribute('title');
+  });
+}
+
+/* -----------------------------------------------------
    LOCAL TIME
    ----------------------------------------------------- */
 function initLocalTime() {
@@ -247,6 +308,8 @@ document.addEventListener('DOMContentLoaded', () => {
   initGithubActivity();
   initLocalTime();
   initSmoothScroll();
+  initProjectFilters();
+  initContraLinks();
   initMansi();
 });
 
