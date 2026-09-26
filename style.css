@@ -127,7 +127,7 @@ body::before {
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   border-bottom: 1px solid transparent;
-  transition: border-color 0.3s var(--ease), background 0.3s var(--ease);
+  transition: border-color 0.3s var(--ease), background 0.3s var(--ease), transform 0.35s var(--ease);
 }
 
 .nav.is-scrolled {
@@ -1348,4 +1348,222 @@ body::before {
 
 @media (hover: none), (pointer: coarse) {
   .mansi { display: none !important; }
+}
+
+/* =====================================================
+   V2 ADDITIONS
+   Same tokens, same design language — new sections only.
+   ===================================================== */
+
+/* Hide-on-scroll-down for the sticky nav (JS already toggles this class) */
+.nav.is-hidden {
+  transform: translateY(-100%);
+}
+
+/* One-line section introductions */
+.section__lead {
+  font-size: 16px;
+  color: var(--muted);
+  line-height: 1.75;
+  max-width: 60ch;
+  margin-bottom: 40px;
+}
+
+.section__lead strong {
+  color: var(--text);
+  font-weight: 600;
+}
+
+/* Mono kicker above project titles — improves card hierarchy */
+.project-card__kicker {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  color: var(--dim);
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+
+.project-card__desc strong {
+  color: var(--text-secondary);
+  font-weight: 600;
+}
+
+/* Project filter bar */
+.filter-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 48px 0 32px;
+}
+
+.filter-btn {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+  background: rgba(20, 20, 20, 0.3);
+  border: 1px solid var(--border);
+  padding: 8px 16px;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: border-color 0.25s var(--ease), color 0.25s var(--ease), background 0.25s var(--ease);
+}
+
+.filter-btn:hover {
+  border-color: var(--border-strong);
+  color: var(--text);
+}
+
+.filter-btn.is-active {
+  background: var(--text);
+  border-color: var(--text);
+  color: var(--bg);
+}
+
+.project-card.is-hidden {
+  display: none;
+}
+
+/* Vertical stack for experience cards */
+.stack {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Bulleted detail list inside experience cards */
+.exp-card__list {
+  margin-top: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.exp-card__list li {
+  display: flex;
+  gap: 10px;
+  font-size: 14px;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+.exp-card__list li::before {
+  content: '—';
+  color: var(--dim);
+  flex-shrink: 0;
+}
+
+/* Freelance / Contra card */
+.freelance-card {
+  background: rgba(20, 20, 20, 0.3);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 32px;
+  transition: border-color 0.3s var(--ease);
+}
+
+.freelance-card:hover {
+  border-color: var(--border-strong);
+}
+
+.services-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px 24px;
+  margin-top: 24px;
+}
+
+.service-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 14px;
+  color: var(--text-secondary);
+}
+
+.service-item::before {
+  content: '';
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--text);
+  flex-shrink: 0;
+}
+
+.freelance__cta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 32px;
+}
+
+/* How I work — Build / Measure / Improve */
+.steps {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+.step {
+  background: var(--surface-raised);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 24px;
+  transition: border-color 0.3s var(--ease), transform 0.3s var(--ease);
+}
+
+.step:hover {
+  border-color: var(--border-strong);
+  transform: translateY(-2px);
+}
+
+.step__number {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  color: var(--dim);
+  text-transform: uppercase;
+  margin-bottom: 14px;
+}
+
+.step__title {
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  margin-bottom: 8px;
+}
+
+.step__text {
+  font-size: 13px;
+  color: var(--muted);
+  line-height: 1.65;
+}
+
+/* V2 responsive behavior */
+@media (max-width: 768px) {
+  .steps {
+    grid-template-columns: 1fr;
+  }
+
+  .services-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .freelance-card {
+    padding: 24px;
+  }
+}
+
+@media (max-width: 480px) {
+  .filter-bar {
+    gap: 6px;
+    margin: 40px 0 24px;
+  }
+
+  .filter-btn {
+    padding: 7px 12px;
+    font-size: 10px;
+  }
 }
