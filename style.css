@@ -261,11 +261,14 @@ body {
   0%, 100% { opacity: 1; transform: scale(1); }
   50% { opacity: 0.35; transform: scale(0.8); }
 }
+
+/* Title — with the Stranger Things upside-down reflection */
 .hero__title {
   font-family: var(--font-display);
   font-size: clamp(2.6rem, 7vw, 5rem);
   font-weight: 900; letter-spacing: 5px; line-height: 1.05;
   margin-bottom: 1.1rem;
+  -webkit-box-reflect: below -14px linear-gradient(transparent 55%, rgba(255, 0, 60, 0.22));
 }
 .hero__title-accent {
   color: var(--red);
@@ -295,12 +298,18 @@ body {
   letter-spacing: 4px; text-transform: uppercase; color: var(--blue);
   text-shadow: 0 0 12px rgba(0, 212, 255, 0.35);
 }
-.hero__role-sep { color: var(--text-3); font-family: var(--font-mono); }
+.hero__role-sep {
+  color: var(--red); font-family: var(--font-mono); font-weight: 700;
+  text-shadow: 0 0 10px rgba(255, 0, 60, 0.5);
+}
 .hero__sub {
   color: var(--text-2); font-size: 1.02rem; max-width: 540px;
   margin-bottom: 2.1rem; line-height: 1.85;
 }
-.hero__sub b { color: var(--text); font-weight: 600; }
+.hero__sub b {
+  color: var(--text); font-weight: 600;
+  text-shadow: 0 0 12px rgba(255, 0, 60, 0.15);
+}
 .hero__actions { display: flex; flex-wrap: wrap; gap: 0.9rem; margin-bottom: 2.6rem; }
 
 .btn {
@@ -426,7 +435,9 @@ body {
 .marquee__track span {
   font-family: var(--font-mono); font-size: 0.85rem; letter-spacing: 3px;
   text-transform: uppercase; color: var(--text-2); white-space: nowrap;
+  transition: color 0.3s, text-shadow 0.3s;
 }
+.marquee__track span:hover { color: var(--red); text-shadow: 0 0 12px rgba(255, 0, 60, 0.4); }
 .marquee__track i { color: var(--red); font-style: normal; font-size: 0.8rem; }
 @keyframes marquee {
   to { transform: translateX(-50%); }
@@ -451,7 +462,9 @@ body {
 .sec-title {
   font-family: var(--font-display); font-size: clamp(1.7rem, 3.6vw, 2.6rem);
   font-weight: 700; line-height: 1.25;
+  transition: text-shadow 0.4s var(--ease);
 }
+.sec-head:hover .sec-title { text-shadow: 0 0 22px rgba(255, 0, 60, 0.18); }
 
 /* ── Reveal on scroll ── */
 .reveal {
@@ -471,7 +484,37 @@ body {
 .about__text .neon-word {
   color: var(--red); font-weight: 600;
   text-shadow: 0 0 10px rgba(255, 0, 60, 0.25);
+  border-bottom: 1px dashed rgba(255, 0, 60, 0.4);
+  padding-bottom: 1px;
+  transition: text-shadow 0.3s, border-color 0.3s;
 }
+.about__text .neon-word:hover {
+  text-shadow: 0 0 16px rgba(255, 0, 60, 0.55);
+  border-bottom-color: var(--red);
+}
+
+/* Classified lab-note quote — the Stranger Things line in About */
+.about__text em {
+  display: block;
+  font-family: var(--font-term); font-size: 1.12rem; letter-spacing: 1px;
+  font-style: normal; color: var(--red);
+  background: rgba(255, 0, 60, 0.04);
+  border: 1px dashed rgba(255, 0, 60, 0.3);
+  border-left: 3px solid var(--red);
+  border-radius: 4px;
+  padding: 0.85rem 1.2rem;
+  margin-top: 1.6rem;
+  text-shadow: 0 0 10px rgba(255, 0, 60, 0.3);
+  box-shadow: inset 0 0 22px rgba(255, 0, 60, 0.05);
+  animation: noteFlicker 6s infinite alternate;
+}
+@keyframes noteFlicker {
+  0%, 100% { opacity: 1; }
+  92% { opacity: 1; }
+  94% { opacity: 0.72; }
+  96% { opacity: 1; }
+}
+
 .facts {
   background: var(--bg-2); border: 1px solid var(--border);
   border-radius: 14px; padding: 1.8rem;
@@ -598,6 +641,10 @@ body {
   color: var(--text-3); padding: 0.22rem 0.55rem;
   border-radius: 3px; background: rgba(255, 255, 255, 0.025);
   border: 1px solid rgba(255, 255, 255, 0.04);
+  transition: color 0.3s, border-color 0.3s;
+}
+.project-card:hover .tag, .project-featured:hover .tag {
+  color: var(--text-2); border-color: rgba(255, 0, 60, 0.14);
 }
 
 .filter-bar { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-bottom: 2rem; }
@@ -705,6 +752,12 @@ body {
   font-family: var(--font-display); font-size: 2.1rem; font-weight: 900;
   color: var(--red); text-shadow: 0 0 18px rgba(255, 0, 60, 0.3);
 }
+.stat-card:hover .stat-card__num { animation: statPulse 1.2s var(--ease); }
+@keyframes statPulse {
+  0% { text-shadow: 0 0 18px rgba(255, 0, 60, 0.3); }
+  40% { text-shadow: 0 0 30px rgba(255, 0, 60, 0.65), 0 0 60px rgba(255, 0, 60, 0.3); }
+  100% { text-shadow: 0 0 18px rgba(255, 0, 60, 0.3); }
+}
 .stat-card__label {
   font-family: var(--font-mono); font-size: 0.65rem; color: var(--text-3);
   text-transform: uppercase; letter-spacing: 2px; margin-top: 0.45rem;
@@ -727,10 +780,12 @@ body {
 .cta__title {
   font-family: var(--font-display); font-size: clamp(1.9rem, 4.5vw, 3.2rem);
   font-weight: 900; line-height: 1.2; margin-bottom: 1.1rem;
+  -webkit-box-reflect: below -10px linear-gradient(transparent 60%, rgba(255, 0, 60, 0.12));
 }
 .cta__title span {
   color: var(--red);
   text-shadow: 0 0 14px rgba(255, 0, 60, 0.5), 0 0 45px rgba(255, 0, 60, 0.2);
+  animation: neonFlicker 5.5s infinite alternate;
 }
 .cta__sub { color: var(--text-2); max-width: 520px; margin: 0 auto 2.2rem; line-height: 1.8; }
 .cta__actions {
@@ -770,6 +825,7 @@ body {
   .hero__grid { grid-template-columns: 1fr; gap: 3rem; text-align: center; }
   .hero__sub { margin-left: auto; margin-right: auto; }
   .hero__actions, .hero__role, .hero__meta { justify-content: center; }
+  .hero__title { -webkit-box-reflect: below -8px linear-gradient(transparent 60%, rgba(255, 0, 60, 0.16)); }
   .about__grid { grid-template-columns: 1fr; gap: 2.4rem; }
   .facts { position: static; }
   .project-featured { grid-template-columns: 1fr; }
@@ -785,6 +841,7 @@ body {
   .stats-grid { grid-template-columns: 1fr; max-width: 320px; }
   .section { padding: 4.5rem 0; }
   .hero__meta { gap: 1.4rem; }
+  .about__text em { font-size: 1rem; }
 }
 @media (max-width: 520px) {
   .container { padding: 0 1.3rem; }
@@ -799,4 +856,5 @@ body {
     transition-duration: 0.01ms !important;
   }
   .reveal, [data-anim] { opacity: 1; transform: none; }
+  .hero__title, .cta__title { -webkit-box-reflect: none; }
 }
